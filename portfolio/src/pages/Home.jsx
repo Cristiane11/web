@@ -1,11 +1,10 @@
-import './Home.css';
+
 
 function Home() {
   return (
     <div className="#">
-      <header className="#">
-        <h1>Home</h1>
-      </header>
+      <h1>Welcome to the Home Page</h1>
+      <p>This is a basic React 19.1.0 + Vite setup.</p>
      
     </div>
   );

@@ -1,14 +1,22 @@
 //import { useState } from 'react'
-import Nav from './components/Nav'
-//import {ContactForm} from './components/Contact'
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer'
+import Home from './pages/Home';
 import './App.css'
 
 function App() {
   
-
   return (
     <>
-      <Nav/>
+      <Header/>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/about" element={<About/>}/>
+        </Routes>
+      </main>
+      <Footer/>
     </>
   )
 }
