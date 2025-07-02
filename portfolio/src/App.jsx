@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import Education from './pages/Education';
 import SkillsPage from './pages/SkillsPage';
 import Experience from './pages/Experience';
-import skills from './skillsData';
+import Projects from './pages/Projects';
 import About from './pages/About';
 import Home from './pages/Home';
 import './App.css'
@@ -17,11 +17,12 @@ function App() {
       <Header/>
       <main>
         <Routes>
-          <Route path="/" element={<Home skills={skills}/>}/>{/* 👈 Pass as prop */}
+          <Route path="/" element={<Home />}/>
           <Route path="/about" element={<About/>}/>
           <Route path="/education" element={<Education/>}/>
           <Route path="/experience" element={<Experience/>}/>
-          <Route path="/skills" element={<SkillsPage skills={skills}/>}/>
+          <Route path="/skills" element={<SkillsPage />}/>
+          <Route path="/projects" element={<Projects />} />
         </Routes>
       </main>
       <Footer/>

@@ -1,7 +1,10 @@
 
 import Skills from './SkillsPage';
+import ProjectCard from '../components/ProjectCard';
+import projects from '../data/projectData';
 
 function Home({skills}) {
+   const latestProjects = projects.slice(-4); // get last 4
   return (
     <>
      <section className="home">
@@ -15,6 +18,14 @@ function Home({skills}) {
         </p>
       </div>
     </section>
+    <section className="projects-preview">
+        <h2 className="section-title">Latest Projects</h2>
+        <div className="projects-grid">
+          {latestProjects.map(project => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      </section>
     {/* Inject child component with props */}
       <Skills skills={skills} />
       </>

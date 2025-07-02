@@ -1,22 +1,20 @@
+function SkillsPage() {
+  const skills = [
+    "JavaScript |", "HTML5 |", "CSS3 |", "ES6 |", "React |", 
+    "Bootstrap |", "Node.js |", "SQL |", "Git |", 
+    "Agile Project Management |", "WordPress"
+  ];
 
-function Skills({ skills }) {
   return (
-    <section className="skills-section" id="skills">
+    <section className="skills-text-section">
       <h2 className="skills-title">Skills</h2>
-      <div className="skills-grid">
-        {skills.map((group, index) => (
-          <div key={index} className="skill-group">
-            <h3>{group.category}</h3>
-            <ul>
-              {group.items.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </div>
+      <p className="skills-line">
+        {skills.map((skill, index) => (
+          <span key={index}>{skill} </span>
         ))}
-      </div>
+      </p>
     </section>
   );
 }
 
-export default Skills;
+export default SkillsPage;
