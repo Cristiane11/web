@@ -84,6 +84,100 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.education {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: var(--text);
+}
+
+.education-summary p {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.education-table {
+  margin-top: 2rem;
+  overflow-x: auto;
+}
+
+.education-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-code);
+  font-size: 0.95rem;
+  border: 1px solid #333;
+}
+
+.education-table th,
+.education-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: 1px solid #333;
+}
+
+.education-table th {
+  background-color: #1c1c1c;
+  color: var(--accent);
+}
+.experience {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+.experience-title {
+  font-family: var(--font-code);
+  color: var(--accent);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordion-item {
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+  font-family: var(--font-code);
+  background-color: #1c1c1c;
+  color: var(--accent);
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.accordion-header:hover {
+  background-color: #2c2c2c;
+}
+
+.accordion-header span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+.accordion-body {
+  background-color: #111;
+  padding: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text);
+}
 
 @media (prefers-color-scheme: light) {
   :root {

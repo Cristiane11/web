@@ -1,9 +1,11 @@
 
+import Skills from './SkillsPage';
 
-function Home() {
+function Home({skills}) {
   return (
+    <>
      <section className="home">
-      <img src='../assets/img/cris.jpeg' alt="Cristiane Abreu" className="home-image" />
+      <img src='../assets/img/cris.jpeg' alt="Cristiane Abreu" className="home-image"/>
       <div className="home-content">
         <h1>Hi, I'm Cristiane Abreu.</h1>
         <p>
@@ -13,6 +15,9 @@ function Home() {
         </p>
       </div>
     </section>
+    {/* Inject child component with props */}
+      <Skills skills={skills} />
+      </>
   );
 }
 
