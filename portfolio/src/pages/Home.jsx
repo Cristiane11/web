@@ -5,7 +5,6 @@ function Home() {
     <div className="#">
       <h1>Welcome to the Home Page</h1>
       <p>This is a basic React 19.1.0 + Vite setup.</p>
-     
     </div>
   );
 }

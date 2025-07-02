@@ -1,8 +1,6 @@
 import {Link } from "react-router-dom";
 import '../index.css';
 
-
-
 function Header() {
   
   return (
