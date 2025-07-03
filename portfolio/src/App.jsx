@@ -5,7 +5,8 @@ import Footer from './components/Footer';
 import Education from './pages/Education';
 import SkillsPage from './pages/SkillsPage';
 import Experience from './pages/Experience';
-import Projects from './pages/Projects';
+import Contact from './pages/Contact';
+import Projects from './pages/Project';
 import About from './pages/About';
 import Home from './pages/Home';
 import './App.css'
@@ -22,7 +23,8 @@ function App() {
           <Route path="/education" element={<Education/>}/>
           <Route path="/experience" element={<Experience/>}/>
           <Route path="/skills" element={<SkillsPage />}/>
-          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects" element={<Projects/>} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
       <Footer/>
