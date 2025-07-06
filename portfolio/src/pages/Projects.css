@@ -37,10 +37,7 @@
   color: var(--accent);
   margin-top: 0.5rem;
 }
-✅ Step 6: Styles — Projects.css & Home section
-css
-Copy
-Edit
+
 /* src/pages/Projects.css */
 .projects-page {
   padding: 2rem 1rem;

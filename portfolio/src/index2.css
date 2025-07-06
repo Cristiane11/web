@@ -1,9 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Delius+Swash+Caps&display=swap');
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-}
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -147,14 +141,7 @@ textarea {
   color: var(--accent);
   font-size: 0.95rem;
 }
-  .logo{
-  font-family: "Delius Swash Caps", cursive;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 40px;
-  color:#506626;
-  }
-.logo2 {
+.logo {
   font-family: 'Fira Code', monospace;
   color: var(--accent);
   font-size: 1.5rem;
@@ -188,7 +175,6 @@ a:hover {
 
 body {
   margin: 0;
-   font-family: 'Fira Code', monospace;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -198,7 +184,6 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  font-style: normal;
 }
 
 button {

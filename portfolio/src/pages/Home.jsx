@@ -10,7 +10,7 @@ function Home({skills}) {
      <section className="home">
       <img src='../assets/img/cris.jpeg' alt="Cristiane Abreu" className="home-image"/>
       <div className="home-content">
-        <h1>Hi, I'm Cristiane Abreu.</h1>
+        <h4>Hi, I'm Cristiane Abreu.</h4>
         <p>
           I’m a front-end developer and SEO consultant. I build clean, performant, and accessible websites
           using modern web technologies like React, JavaScript, and Node.js. With nearly a decade of experience,
