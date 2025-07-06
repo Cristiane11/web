@@ -8,8 +8,8 @@ function Header() {
   return (
     <>
     
-    <header className="header">
-      <h1 className="logo">CristianeAbreu</h1>
+    <div className="header-container">
+     
 
     <nav className="nav">
       <NavLink to="/" activeClassName="active">Home</NavLink>
@@ -29,7 +29,16 @@ function Header() {
           <a href="mailto:youremail@example.com"><FaEnvelope /></a>
         </div>
       </div>
-    </header>
+        <header className="header__text-box">
+                <h1 className="heading-primary">
+                 <span class="heading-primary--main">Cristiane Abreu</span>
+                  <span class="heading-primary--sub">Full Stack Developer</span>
+                </h1>
+                <a href="/contact" class="btn btn--white btn--animated">Contact Me</a>
+
+        </header>
+      
+    </div>
     </>
   );
 }
