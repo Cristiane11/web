@@ -3,7 +3,7 @@
   width: 100%;
   height: 100vh;
   background: linear-gradient(rgba(20, 34, 76, 0.6), rgba(102, 191, 250, 0.6)),
-              url('./assets/img/analyze.jpeg') center center/cover no-repeat;
+              url('./assets/img/hr.jpeg') center center/cover no-repeat;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -30,14 +30,14 @@
 }
 
 .navLink {
-  color: white;
-  font-size: 18px;
+  color: #FFF;
+  font-size: 30px;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .navLink:hover {
-  color: #00e5ff;
+  color: #000EC9;
 }
 
 .navLink.active {
@@ -76,12 +76,12 @@
 }
 
 .heading-primary--main {
-  font-size: 48px;
+  font-size: 68px;
   font-weight: bold;
 }
 
 .heading-primary--sub {
-  font-size: 28px;
+  font-size: 38px;
   margin-top: 10px;
   display: block;
   margin-bottom: 20px;

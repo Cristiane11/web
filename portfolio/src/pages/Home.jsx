@@ -1,12 +1,15 @@
 
 import Skills from './SkillsPage';
 import ProjectCard from '../components/ProjectCard';
+import Header from '../components/Header';
 import projects from '../data/projectData';
 
 function Home({skills}) {
+
    const latestProjects = projects.slice(-4); // get last 4
   return (
     <>
+      <Header/>
      <section className="home">
       <img src='../assets/img/cris.jpeg' alt="Cristiane Abreu" className="home-image"/>
       <div className="home-content">
