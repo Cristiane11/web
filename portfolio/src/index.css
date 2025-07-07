@@ -21,6 +21,75 @@ h1,h2{
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
  }
+.header-container nav{
+  border: 0;
+	display: block;
+	height: inherit;
+	line-height: inherit;
+  right: 0;
+	top: 0;
+}
+	@media screen and (max-width: 736px) {
+
+					#header h1 a {
+						font-size: 0.8em;
+					}
+
+				}
+
+.header-container nav > ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+
+.header-container nav > ul > li {
+	display: inline-block;
+	padding: 0;
+}
+
+.header-container nav > ul > li > a {
+						border: 0;
+						color: #fff;
+						display: block;
+						font-size: 0.8em;
+						letter-spacing: 0.225em;
+						padding: 0 1.5em;
+						text-transform: uppercase;
+					}
+
+.header-container nav > ul > li > a.menuToggle {
+							outline: 0;
+							position: relative;
+						}
+
+.header-container nav > ul > li > a.menuToggle:after {
+								background-image: url("./assets/img/bars.svg");
+								background-position: right center;
+								background-repeat: no-repeat;
+								content: '';
+								display: inline-block;
+								height: 3.75em;
+								vertical-align: top;
+								width: 2em;
+							}
+
+@media screen and (max-width: 736px) {
+
+    .header-container nav > ul > li > a.menuToggle {
+									padding: 0 1.5em;
+								}
+
+    .header-container nav > ul > li > a.menuToggle span {
+										display: none;
+									}
+
+							}
+
+
+
+
 
 
 
@@ -76,7 +145,7 @@ h1,h2{
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--accent);
+  color:#ffffff;
 }
 a {
   font-weight: 500;
