@@ -1,66 +1,141 @@
-
-
-/* Banner Section */
+/* Header Container */
 .header-container {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+  background: linear-gradient(rgba(20, 34, 76, 0.6), rgba(102, 191, 250, 0.6)),
               url('./assets/img/analyze.jpeg') center center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   position: relative;
   overflow: hidden;
-}
-.nav{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  padding: 10px 20px;
-}
-.navLink{
-  list-style: none;
-  display: flex;
-  color: white;
-  font-size: 28px;
-  gap: 20px;
+  flex-direction: column;
 }
 
+/* Navigation Styles */
+.nav {
+  display: flex;
+  justify-content: flex-end; /* Moves nav-links to the right */
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  padding: 20px 40px;
+  z-index: 10;
+}
+
+#nav-links {
+  display: flex;
+  gap: 20px;
+  padding-right: 20px;
+}
+
+.navLink {
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #00e5ff;
+}
+
+.navLink.active {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
+
+/* Hamburger Menu */
 .menu-icon {
+  display: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+/* Banner Section - Centered Content */
+#banner {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.inner {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading-primary--main {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.heading-primary--sub {
+  font-size: 28px;
+  margin-top: 10px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* Styled Button */
+.button.primary {
+  margin-top: 0;
+  padding: 12px 24px;
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.button.primary:hover {
+  background-color: #005ed6;
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  #nav-links {
     display: none;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #000EC9;
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
   }
-  
-  /* Hide the checkbox input */
-  #menu-toggle {
-    display: none;
+
+  .menu-icon {
+    display: block;
   }
-  
-  /* Media query for smaller screens */
-  @media screen and (max-width: 768px) {
-    /* Hide the navigation links by default */
-    nav ul {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      background-color: #333;
-    }
-  
-    /* Display the hamburger icon */
-    .menu-icon {
-      display: block;
-    }
-  
-    /* When the checkbox is checked, show the menu */
-    #menu-toggle:checked + label + NavLink {
-      display: flex;
-    }
-  
-    NavLink {
-      margin: 10px 0;
-    }
+
+  #menu-toggle:checked + label + #nav-links {
+    display: flex;
   }
-  
+
+  .navLink {
+    margin: 10px 0;
+  }
+
+  .button.primary {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
