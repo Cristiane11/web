@@ -10,9 +10,13 @@ function Header() {
     
     <div className="header-container">
      
-    <a href="#menu" className="menuToggle"><span>Menu</span></a>
+    
     <nav className="nav">
-      <div id="menu">
+     
+      <input type="checkbox" id="menu-toggle"/>
+      
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <div id="nav-links">
             <NavLink to="/" activeClassName="active">Home</NavLink>
             <NavLink to="/education" activeClassName="active">Education</NavLink>
             <NavLink to="/experience" activeClassName="active">Experience</NavLink>
