@@ -10,7 +10,7 @@ function Header() {
     
     <div className="header-container">
      
-
+    <a href="#menu" className="menuToggle"><span>Menu</span></a>
     <nav className="nav">
       <NavLink to="/" activeClassName="active">Home</NavLink>
       <NavLink to="/education" activeClassName="active">Education</NavLink>
@@ -31,14 +31,13 @@ function Header() {
       </div>
         <header className="header__text-box">
                 <h1 className="heading-primary">
-                 <span class="heading-primary--main">Cristiane Abreu</span>
-                  <span class="heading-primary--sub">Full Stack Developer</span>
+                 <span className="heading-primary--main">Cristiane Abreu</span>
+                  <span className="heading-primary--sub">Full Stack Developer</span>
                 </h1>
-                <a href="/contact" class="btn btn--white btn--animated">Contact Me</a>
+                <a href="/contact" className="btn btn--white btn--animated">Contact Me</a>
 
         </header>
-      
-    </div>
+      </div>
     </>
   );
 }
