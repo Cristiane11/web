@@ -5,7 +5,7 @@
   width: 100%;
   height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-              url('/images/your-background.jpg') center center/cover no-repeat;
+              url('./assets/img/analyze.jpeg') center center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,14 +16,51 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-   color: white;
+  color: white;
   padding: 10px 20px;
 }
-.NavLink{
+.navLink{
   list-style: none;
   display: flex;
   color: white;
-  font-size: 18px;
+  font-size: 28px;
   gap: 20px;
 }
 
+.menu-icon {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Hide the checkbox input */
+  #menu-toggle {
+    display: none;
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 768px) {
+    /* Hide the navigation links by default */
+    nav ul {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      background-color: #333;
+    }
+  
+    /* Display the hamburger icon */
+    .menu-icon {
+      display: block;
+    }
+  
+    /* When the checkbox is checked, show the menu */
+    #menu-toggle:checked + label + NavLink {
+      display: flex;
+    }
+  
+    NavLink {
+      margin: 10px 0;
+    }
+  }
+  

@@ -9,20 +9,18 @@ function Header() {
     <>
     
     <div className="header-container">
-     
-    
     <nav className="nav">
      
       <input type="checkbox" id="menu-toggle"/>
       
-      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <label for="menu-toggle" className="menu-icon">&#9776;</label>
       <div id="nav-links">
-            <NavLink to="/" activeClassName="active">Home</NavLink>
-            <NavLink to="/education" activeClassName="active">Education</NavLink>
-            <NavLink to="/experience" activeClassName="active">Experience</NavLink>
-            <NavLink to="/projects" activeClassName="active">Projects</NavLink>
-            <NavLink to="/about" activeClassName="active">About</NavLink>
-            <NavLink to="/contact" activeClassName="active">Contact</NavLink>
+            <NavLink className ="navLink" to="/" activeClassName="active">Home</NavLink>
+            <NavLink className ="navLink" to="/education" activeClassName="active">Education</NavLink>
+            <NavLink className ="navLink" to="/experience" activeClassName="active">Experience</NavLink>
+            <NavLink className ="navLink" to="/projects" activeClassName="active">Projects</NavLink>
+            <NavLink className ="navLink" to="/about" activeClassName="active">About</NavLink>
+            <NavLink className ="navLink" to="/contact" activeClassName="active">Contact</NavLink>
       </div>
      
     </nav>
