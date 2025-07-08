@@ -3,8 +3,10 @@ import projects from './projectData';
 
 
 export default function Project(){
+    
     return(
         <div className="#">
+            
             <section >
                 {projects.map(item=>(
                 <p key={item.id}>

@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { NavLink } from "react-router-dom";
+import Nav from '../components/Nav';
 
 
+<Nav/>
 function Contact() {
   const [status, setStatus] = useState('');
 

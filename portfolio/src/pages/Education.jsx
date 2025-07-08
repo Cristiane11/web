@@ -2,9 +2,10 @@ import { NavLink } from "react-router-dom";
 import Nav from '../components/Nav';
 
 function Education() {
+  <Nav/>
   return (
     <>
-    <Nav/>
+
     <section className="education">
       <div className="education-summary">
         <p>

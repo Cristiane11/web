@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { NavLink } from "react-router-dom";
+import Nav from '../components/Nav';
 
+<Nav/>
 const jobs = [
   {
     title: "TEKsystems INC | New Providence, NJ",
