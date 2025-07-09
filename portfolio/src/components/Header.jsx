@@ -7,7 +7,7 @@ function Header() {
     <>
       <div className="header-container">
    
-    <Nav/>
+  
         <section id="banner">
           <div className="inner">
             <h1 className="heading-primary">

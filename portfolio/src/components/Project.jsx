@@ -2,12 +2,15 @@ import React from 'react';
 import projects from './projectData';
 
 
+
 export default function Project(){
     
     return(
-        <div className="#">
-            
-            <section >
+        <>
+
+        <div className="container">
+        
+            <section className="container">
                 {projects.map(item=>(
                 <p key={item.id}>
                 {item.title} 
@@ -17,6 +20,8 @@ export default function Project(){
                 </p>  
             ))};
             </section> 
-        </div>   
+        </div>  
+
+         </> 
     );
 };

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Nav from '../components/Nav';
 
 
-<Nav/>
+
 function Contact() {
   const [status, setStatus] = useState('');
 
@@ -29,7 +29,8 @@ function Contact() {
   };
 
   return (
-    <section className="contact-section">
+    <section className="contact-section container">
+      <Nav/>
       <h2 className="section-title">Contact Me</h2>
 
       <form onSubmit={handleSubmit} className="contact-form">

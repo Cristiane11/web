@@ -1,12 +1,14 @@
 import { NavLink } from "react-router-dom";
 import Nav from '../components/Nav';
+import './pages.css';
+
 
 function Education() {
-  <Nav/>
+
   return (
     <>
-
-    <section className="education">
+ <Nav/>
+    <section className="education container">
       <div className="education-summary">
         <p>
           <strong>Rutgers University</strong>, Coding Bootcamp, Graduation: 08/2018, Newark NJ

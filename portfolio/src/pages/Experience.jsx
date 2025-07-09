@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import Nav from '../components/Nav';
+import './pages.css';
 
 <Nav/>
 const jobs = [
@@ -32,7 +33,9 @@ function Experience() {
   };
 
   return (
-    <section className="experience">
+
+    <section className="experience container">
+      <Nav/>
       <h1 className="experience-title">Professional Experience</h1>
       <div className="accordion">
         {jobs.map((job, index) => (
