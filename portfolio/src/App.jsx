@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Projects from './pages/Project';
 import About from './pages/About';
 import Home from './pages/Home';
+import'./pages/pages.css'
 import './index.css'
 
 function App() {

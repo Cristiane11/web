@@ -4,7 +4,7 @@ import './Projects.css';
 
 function Projects() {
   return (
-    <section className="projects-page">
+    <section className="projects-page container">
       <h2 className="section-title">All Projects</h2>
       <div className="projects-grid">
         {projects.map(project => (

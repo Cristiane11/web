@@ -2,6 +2,7 @@
 import Skills from './SkillsPage';
 import ProjectCard from '../components/ProjectCard';
 import Header from '../components/Header';
+import reactDeveloper from '../assets/img/reactDeveloper.jpg'
 import projects from '../data/projectData';
 import Nav from '../components/Nav'
 
@@ -14,7 +15,7 @@ function Home({skills}) {
     <Nav/>
     <Header/>
      <section className="home container">
-      <img src='../assets/img/cris.jpeg' alt="Cristiane Abreu" className="home-image"/>
+      <img src={reactDeveloper} alt="Cristiane Abreu" className="home-image"/>
       <div className="home-content">
         <h4>Hi, I'm Cristiane Abreu.</h4>
         <p>

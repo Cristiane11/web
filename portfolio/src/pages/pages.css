@@ -1,14 +1,122 @@
-.container{
-    background-color: #000;
-    color:#FFF;
-    font-family:Lato, sans-serif;
 
+
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lato&display=swap');
+
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000ec9;
+  font-family: 'Lato', sans-serif;
+  color: #fff;
+  line-height: 1.6;
 }
-h1{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 40px;
-    line-height: 1.5;
-    letter-spacing: 0.05em;
-    font-family: 'Playfair Display', serif;
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Home Section */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.home-image {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+  border: 3px solid #fff;
+}
+
+.home-content p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+/* Projects Section */
+.projects-preview {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.projects-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  padding: 2rem 0;
+}
+
+.Project-button {
+  display: inline-block;
+  background: #fff;
+  color: #000ec9;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.Project-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Skills Section */
+.skills-text-section {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.skills-line span {
+  display: inline-block;
+  margin: 0.25rem;
+  font-weight: bold;
+}
+
+/* About Page */
+.about .container {
+  text-align: center;
+}
+
+.about h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 0.5rem;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home, .projects-preview, .skills-text-section, .about .container {
+    padding: 1rem;
+  }
+
+  .home-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 }
