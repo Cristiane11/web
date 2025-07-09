@@ -12,7 +12,7 @@ return(
             <NavLink to="/" className={({ isActive }) => isActive ? "navLink active" : "navLink"}>Home</NavLink>
             <NavLink to="/education" className={({ isActive }) => isActive ? "navLink active" : "navLink"}>Education</NavLink>
             <NavLink to="/experience" className={({ isActive }) => isActive ? "navLink active" : "navLink"}>Experience</NavLink>
-            <NavLink to="/projects" className={({ isActive }) => isActive ? "navLink active" : "navLink"}>Projects</NavLink>
+        
             <NavLink to="/about" className={({ isActive }) => isActive ? "navLink active" : "navLink"}>About</NavLink>
             <NavLink to="/contact" className={({ isActive }) => isActive ? "navLink active" : "navLink"}>Contact</NavLink>
           </div>

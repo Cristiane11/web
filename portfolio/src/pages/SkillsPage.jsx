@@ -10,7 +10,7 @@ function SkillsPage() {
   ];
 
   return (
-    <section className="skills-text-section">
+    <section className="skills-text-section container">
       <h2 className="skills-title">Skills</h2>
       <p className="skills-line">
         {skills.map((skill, index) => (

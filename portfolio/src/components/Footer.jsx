@@ -1,6 +1,5 @@
 import {NavLink } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaFacebook, FaEnvelope,FaGoogle} from "react-icons/fa";
-
 import '../index.css';
 
 function Footer(){

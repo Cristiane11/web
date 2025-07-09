@@ -3,6 +3,7 @@ import Skills from './SkillsPage';
 import ProjectCard from '../components/ProjectCard';
 import Header from '../components/Header';
 import projects from '../data/projectData';
+import Nav from '../components/Nav'
 
 
 function Home({skills}) {
@@ -10,6 +11,7 @@ function Home({skills}) {
    const latestProjects = projects.slice(-4); // get last 4
   return (
     <>
+    <Nav/>
     <Header/>
      <section className="home container">
       <img src='../assets/img/cris.jpeg' alt="Cristiane Abreu" className="home-image"/>
@@ -27,8 +29,11 @@ function Home({skills}) {
         <div className="projects-grid">
           {latestProjects.map(project => (
             <ProjectCard key={project.id} project={project} />
+         
           ))}
+              
         </div>
+          <a href="/projects" className=" Project-button">Click to see more projects</a>
       </section>
     {/* Inject child component with props */}
       <Skills skills={skills} />
