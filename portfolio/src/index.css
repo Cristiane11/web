@@ -7,9 +7,16 @@
   position: relative;
   overflow: hidden;
   display: flex;
+
   flex-direction: column;
 }
+.header-container h1{
+ 
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  text-align: center;
 
+}
 /* Navigation Styles */
 .nav {
   display: flex;
@@ -103,6 +110,71 @@
 .button.primary:hover {
   background-color: #005ed6;
 }
+/*footer styeles*/
+.footer {
+  background-color: #000ec9;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+}
+
+.footer-phone,
+.footer-credit {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.footer-credit a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.social-icons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  background-color: #ccc;
+  color: #000ec9;
+  width: 51px;
+  height: 51px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+  background-color: #fff;
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .social-icons {
+    gap: 0.75rem;
+  }
+
+  .social-icons a {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+}
+
+
+
 
 /* Responsive Styling */
 @media screen and (max-width: 768px) {

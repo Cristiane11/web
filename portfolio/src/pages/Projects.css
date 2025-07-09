@@ -1,5 +1,5 @@
 .project-card {
-  background-color: #fff;
+  background-color: #E6E7FF;
   border: 1px solid #333;
   border-radius: 8px;
   overflow: hidden;
@@ -13,6 +13,11 @@
 
 .project-card:hover {
   transform: translateY(-5px);
+}
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+  color: #000ec9;
+  text-align: center;
 }
 
 .project-img {
@@ -28,13 +33,13 @@
 
 .project-desc {
   font-size: 0.9rem;
-  color: var(--text);
+  color:#444;
 }
 
 .project-skills {
   font-family: var(--font-code);
   font-size: 0.85rem;
-  color: var(--accent);
+  color: #444;
   margin-top: 0.5rem;
 }
 
