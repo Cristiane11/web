@@ -4,7 +4,7 @@ const projects = [
         title: "AirBnb",
         description: "Created white ReactJs, HTML, CSS, ",
         technologies: 136,
-        coverImg: "airbnb.png",
+        coverImg: "../src/assets/digitalMarketing.jpeg",
         link: "Online",
         
     },
@@ -13,7 +13,7 @@ const projects = [
         title: "Netflix",
         description: "Created white ReactJs, HTML, CSS,jsx ",
         technologies: 136,
-        coverImg: "netflix.png",
+        coverImg: "../src/assets/searchEngineOptimization.jpeg",
         link: "Online",
        
     },
@@ -22,7 +22,7 @@ const projects = [
         title: "Affordable Website",
         description: "Created white ReactJs, HTML, CSS, ",
         technologies: 136,
-        coverImg: "websitePro.png",
+        coverImg: "../src/assets/SEOforWordpresss.jpeg",
         link: "Online",
     },
     {
@@ -30,7 +30,7 @@ const projects = [
         title: "Meme",
         description: "Created white ReactJs, HTML, CSS, ",
         technologies: 136,
-        coverImg: "websitePro.png",
+        coverImg: "../src/assets/digitalMarketing.jpeg",
         link: "Online",
     },
     {
@@ -38,7 +38,7 @@ const projects = [
         title: "Travel",
         description: "Created white ReactJs, HTML, CSS, ",
         technologies: 136,
-        coverImg: "websitePro.png",
+        coverImg: "../src/assets/digitalMarketing.jpeg",
         link: "Online",
     }
    

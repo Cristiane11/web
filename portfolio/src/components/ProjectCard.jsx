@@ -12,6 +12,7 @@ function ProjectCard({ project }) {
         <h3>{project.title}</h3>
         <p className="project-desc">{project.description}</p>
         <p className="project-skills">{project.projectSkills}</p>
+        <a className="project-link" href={project.link}>View Project</a>
       </div>
     </div>
   );

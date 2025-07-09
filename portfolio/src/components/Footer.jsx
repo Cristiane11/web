@@ -9,11 +9,11 @@ function Footer(){
       <p className="footer-credit"> &copy;{new Date().getFullYear()}| <a href="./about">Cristiane Abreu</a></p>
       
           <div className="social-icons">
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-            <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
-            <a href="https://google.com/yourprofile" target="_blank" rel="noopener noreferrer"><FaGoogle /></a>
-            <a href="mailto:youremail@example.com"><FaEnvelope /></a>
+            <a href="https://github.com/Cristiane11" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/cristianegabreu/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+            <a href="https://www.facebook.com/people/Website-Professional/100066757076765/" target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
+            <a href="https://g.co/kgs/UgtGyva" target="_blank" rel="noopener noreferrer"><FaGoogle /></a>
+            <a href="mailto:cristipiane@gmail.com"><FaEnvelope /></a>
           </div>
       
   </footer>

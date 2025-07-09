@@ -16,7 +16,7 @@
 }
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', serif;
-  color: #000ec9;
+  color: #fff;
   text-align: center;
 }
 
@@ -29,8 +29,12 @@ h1, h2, h3, h4 {
 
 .project-content {
   padding: 1rem;
+ 
+   
 }
-
+.project-content h3{
+   color: #000ec9;
+}
 .project-desc {
   font-size: 0.9rem;
   color:#444;
