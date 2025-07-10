@@ -1,5 +1,5 @@
 import React from 'react';
-import projects from './projectData';
+import projects from '../data/projectData';
 
 
 
@@ -17,8 +17,8 @@ export default function Project(){
                 {item.description} 
                 {item.coverImg} 
                 {item.link} 
-                </p>  
-            ))};
+                </p>
+            ))}
             </section> 
         </div>  
 

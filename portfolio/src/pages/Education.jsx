@@ -7,8 +7,12 @@ function Education() {
 
   return (
     <>
- <Nav/>
-    <section className="education container">
+      <Nav/>
+   
+    <br/>
+      <div>
+        <section className="education container">
+          <h1>Education</h1>
       <div className="education-summary">
         <p>
           <strong>Rutgers University</strong>, Coding Bootcamp, Graduation: 08/2018, Newark NJ
@@ -19,7 +23,7 @@ function Education() {
         </p>
       </div>
 
-      <div className="education-table">
+      <div className="education-table container">
         <table>
           <thead>
             <tr>
@@ -48,6 +52,7 @@ function Education() {
         </table>
       </div>
     </section>
+    </div>
     </>
   );
 }
