@@ -67,3 +67,23 @@ h1, h2, h3, h4 {
   gap: 2rem;
   justify-content: center;
 }
+.search-box {
+  margin: 1rem auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #cccfff;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+}
+
+.no-results {
+  color: #fff;
+  font-style: italic;
+  margin-top: 2rem;
+}
