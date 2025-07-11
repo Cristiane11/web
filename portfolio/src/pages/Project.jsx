@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import projects from '../data/projectData';
 import ProjectCard from '../components/ProjectCard';
+import Nav from '../components/Nav'
 import './Projects.css';
 
 function Projects() {
@@ -13,6 +14,7 @@ function Projects() {
 
   return (
     <section className="projects-page container">
+      <Nav/>
       <h2 className="section-title">All Projects</h2>
 
       {/* Search Input */}
