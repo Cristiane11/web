@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '../components/Nav';
-import reactDeveloper from '../assets/img/reactDeveloper.jpg'
+import CristianeAbreu from '../assets/img/cristianeAbreu.jpg'
 
 export default function About(){
     return(
@@ -14,7 +14,7 @@ export default function About(){
           </p>
         </div>
        
-        <img src={reactDeveloper} alt="Cristiane Abreu" className="about-image" />
+        <img src={CristianeAbreu} alt="Cristiane Abreu" className="about-image" />
       </div>
     </div>
     )

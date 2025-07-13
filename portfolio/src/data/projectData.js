@@ -1,19 +1,19 @@
 const projects = [
   {
     id: 1,
-    img: "./src/assets/img/GoogleAds.jpeg",
-    title: "WordPress Website",
+    img: "./src/assets/img/Athens1.jpg",
+    title: " Real estate WordPress Website",
     projectSkills: "JS, HTML, CSS, React",
     description: "E-commerce WordPress site for fashion brand.",
-    link: "./contact"
+    link: "https://athensrealestate.pro/"
   },
   {
     id: 2,
-    img: "./src/assets/img/searchEngineOptimization.jpeg",
-    title: "Salon Booking Site",
+    img: "./src/assets/img/website.jpg",
+    title: "SEO Marketing Agency",
     projectSkills: "JS, HTML, CSS, React",
-    description: "Booking platform for a hair salon using WordPress and custom styling.",
-    link: "./contact"
+    description: "SEO marketing agency website with custom design and functionality.",
+    link: "https://professionalwebsite.co/ "
   },
   {
     id: 3,

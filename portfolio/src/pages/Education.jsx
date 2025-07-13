@@ -15,11 +15,11 @@ function Education() {
           <h1>Education</h1>
       <div className="education-summary">
         <p>
-          <strong>Rutgers University</strong>, Coding Bootcamp, Graduation: 08/2018, Newark NJ
-          <br />
-          <strong>BS in Computer Information Technologies</strong>, South Piedmont Community College, Graduation: 12/2013 Monroe, NC
-          <br />
-          <strong>Bachelor of Arts in Elementary Education</strong>, E.E. Monsenhor Amantino, Graduation: 12/1998 MG, Brazil
+         <h3> <strong>Rutgers University</strong>, Coding Bootcamp, Newark NJ</h3>
+        
+          <h3> <strong>BS in Computer Information Technologies</strong>, South Piedmont Community College, Monroe, NC</h3>
+
+          <h3><strong>Bachelor of Arts in Elementary Education</strong>, E.E. Monsenhor Amantino Dos Santos, Brazil</h3>
         </p>
       </div>
 

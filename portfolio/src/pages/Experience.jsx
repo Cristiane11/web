@@ -36,7 +36,7 @@ function Experience() {
         
           <h1>Affordable Websites LLC | Charlotte, NC (Remote)</h1>
 
-          <h4>Front-End Engineer | Charlotte-NC | Remote</h4>
+          <h4>Front-End Engineer |Remote</h4>
           <p>
             I built web applications by translating designs and wireframes into fully functional components, writing clean, efficient code, and ensuring responsiveness and performance across various devices and browsers. My primary focus was on user interaction, utilizing HTML, CSS, Bootstrap, JavaScript, TypeScript, and React. I applied my knowledge of the Software Development Life Cycle (SDLC) to contribute to the delivery of responsive, cross-browser-compatible, and high-performance production web applications.
             I collaborated closely with backend developers and cross-functional teams within an Agile development environment. I used GitHub for version control, creating repositories and updating unit tests for both new and existing applications.

@@ -17,11 +17,9 @@ function Home({skills}) {
      <section className="home container">
       <img src={reactDeveloper} alt="Cristiane Abreu" className="home-image"/>
       <div className="home-content">
-        <h4>Hi, I'm Cristiane Abreu.</h4>
+        <h4>Hi, I'm Cristiane Abreu</h4>
         <p>
-          I’m a front-end developer and SEO consultant. I build clean, performant, and accessible websites
-          using modern web technologies like React, JavaScript, and Node.js. With nearly a decade of experience,
-          I help businesses grow their online presence through strategic SEO and effective UI development.
+         I’m a front-end developer and SEO consultant with nearly a decade of experience helping businesses grow their online presence. I specialize in building clean, high-performing, and accessible websites using modern technologies like React, JavaScript, and Node.js. By combining thoughtful UI development with strategic SEO practices, I create digital experiences that not only look great but also drive meaningful results.
         </p>
       </div>
     </section>
