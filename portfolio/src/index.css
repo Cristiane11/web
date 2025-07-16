@@ -37,14 +37,14 @@
 }
 
 .navLink {
-  color: #FFF;
+  color: #8CFF65;
   font-size: 30px;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .navLink:hover {
-  color: #000EC9;
+  color: #FBFD53;
 }
 
 .navLink.active {
@@ -56,7 +56,7 @@
 .menu-icon {
   display: none;
   font-size: 30px;
-  color: white;
+  color: #FBFD53;
   cursor: pointer;
   margin-left: auto;
 }
@@ -85,7 +85,7 @@
 .heading-primary--main {
   font-size: 68px;
   font-weight: bold;
-    color:#0a19ee ;
+  color:#FBFD53 ;
   animation: fadeIn 2s ease-in-out;
 }
 
@@ -95,6 +95,7 @@
   display: block;
   margin-bottom: 20px;
   animation: slideUp 2s ease-in-out;
+  color:#8CFF65 ;
 }
 
 
@@ -108,8 +109,8 @@
   max-width: 500px;
   height: 60px;
 
-  background: linear-gradient(90deg, #CCCFFF 33.33%, #4D58FF 72.37%);
-  color: #000;
+  background: #000ec9;
+  color: #FBFD53;
   font-size: 30px;
   font-weight: bold;
 
