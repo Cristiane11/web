@@ -37,14 +37,14 @@
 }
 
 .navLink {
-  color: #8CFF65;
+  color: #FBFD53;
   font-size: 30px;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .navLink:hover {
-  color: #FBFD53;
+  color: #00A5ED;
 }
 
 .navLink.active {
@@ -95,7 +95,7 @@
   display: block;
   margin-bottom: 20px;
   animation: slideUp 2s ease-in-out;
-  color:#8CFF65 ;
+  color:#000EC9 ;
 }
 
 
@@ -110,7 +110,7 @@
   height: 60px;
 
   background: #000ec9;
-  color: #FBFD53;
+  color: #00A5ED;
   font-size: 30px;
   font-weight: bold;
 
