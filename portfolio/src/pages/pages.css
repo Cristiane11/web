@@ -292,13 +292,15 @@ h1, h2, h3, h4 {
 
   .projects-grid {
     grid-template-columns: 1fr;
+    background-color: #00a5ed;
   }
   .education-table{
     width: 100%;
     height: 100%;
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
-    text-align: center;
+    text-align:left;
   }
 }
 /* Education Section */
@@ -333,8 +335,8 @@ h1, h2, h3, h4 {
 
 .education-table th,
 .education-table td {
-  border: 1px solid #ffffff50;
-  padding: 0.75rem 1rem;
+border: 1px solid #ffffff50;
+padding: 0.75rem 1rem;
 }
 
 .education-table thead th {
@@ -369,9 +371,10 @@ h1, h2, h3, h4 {
   }
 
   .education-table td {
-    text-align: right;
-    padding-left: 50%;
+    text-align: left;
+    padding-left: 15%;
     position: relative;
+    background-color: #00A5ED;
   }
 
   .education-table td::before {
