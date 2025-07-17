@@ -4,9 +4,9 @@ import Nav from '../components/Nav';
 function SkillsPage() {
   <Nav/>
   const skills = [
-    "JavaScript |", "HTML5 |", "CSS3 |", "ES6 |", "React |", 
-    "Bootstrap |", "Node.js |", "SQL |", "Git |", 
-    "Agile Project Management |", "WordPress"
+    "JavaScript |","Python |", "HTML5 |", "CSS3 |", "ES6 |", "React |", 
+    "Bootstrap |", "Node.js |", "SQL |", "Git |", "SEO |","Google Analytic |",
+    "Agile Project Management |", "WordPress |","Problem-solving|","Reliability |","Accountability"
   ];
 
   return (

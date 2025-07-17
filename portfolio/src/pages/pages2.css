@@ -8,14 +8,13 @@ body {
   padding: 0;
   background-color: #000ec9;
   font-family: 'Lato', sans-serif;
-  color: #FBFD53;
-  font-size: 1.5rem;
+  color: #fff;
   line-height: 1.6;
 }
 
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', serif;
-  color: #00A5ED;
+  color: #fff;
   text-align: center;
 }
 
@@ -34,49 +33,50 @@ h1, h2, h3, h4 {
   padding: 0;
 }
 
-
+/*.home {this is last version
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  text-align: left;
+  font-size: 1rem;
+  height: 85vh;
+}*/
 .home-image,
 .home-content {
-   /*flex: 1;*/
    background-color: #fbfd53;
    min-height: 400px;
    padding: 1rem;
 }
-/* Desktop Layout */
 @media (min-width: 768px) {
   .home {
     flex-direction: row;
+    align-items: center;
+    text-align: center;
     height: 85vh;
-    
   }
 }
-/* Home Image Styling */
-.home-image {
-  background-color: #fbfd53;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  
-}
 .home-image img {
-  
+  background-color: #fbfd53;
   width: 100%;
   max-width: 480px;
   height: auto;
   object-fit: cover;
   border-radius: 8px;
- 
 }
+
+
 /* Home Content Styling */
 .home-content {
   background-color: #000ec9;
   color: #fbfd53;
   display: flex;
   flex-direction: column;
+  padding-left: 80px;
+  margin-left: 95px;
   justify-content: center;
+  font-size: 25px;
+  align-items: center;;
   text-align:center;
-  flex: 2;
 
 }
 
@@ -92,12 +92,46 @@ h1, h2, h3, h4 {
   margin-left: auto;
   font-size: 1.5rem;
   line-height: 1.6;
-  padding-left: 80px;
-  margin-left: 75px;
-  
+}
+
+/*.home-image { this is last version
+  background-color: #fbfd53;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}*/
+/*
+last version
+.home-image img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
 }
 
 
+
+.home-content {
+  background-color: #000ec9;
+  color: #fbfd53;
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  margin-left: 45px;
+}
+.home-content h1 {
+   color: #fbfd53;
+   font-family: 'Playfair Display', serif;
+}
+
+.home-content p {
+  max-width: 600px;
+  font-size: 1rem;
+}*/
 
 /* Projects Section */
 .projects-preview {
@@ -131,31 +165,82 @@ h1, h2, h3, h4 {
 }
 
 .Project-button:hover {
-  background-color: #767d80;
+  background-color: #00a5ed;
+}
+/*
+.home-image {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  border: 3px solid #fff;
 }
 
+.home-content p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+*/
+/* Projects Section */
+/*
+.projects-preview {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.projects-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  padding: 2rem 0;
+}
+
+.Project-button {
+  display: inline-block;
+  background: #fff;
+  color: #000ec9;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
 
 .Project-button:hover {
-  background-color: #00A5ED;
+  background-color: #e0e0e0;
 }
 */
 /* Skills Section */
 .skills-text-section {
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 2rem 1rem;
 }
 
 .skills-line span {
   display: inline-block;
-  padding-left: 35px;
   margin: 0.25rem;
   font-weight: bold;
 }
 
+/* About Page 
+.about .container {
+  text-align: center;
+}
 
+.about h3 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 0.5rem;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1rem;
+}*/
 .about-section {
   background-color: #000ec9;
   color: #fff;
@@ -206,6 +291,7 @@ h1, h2, h3, h4 {
 
   .about-image {
     width: 100%;
+    
     margin-bottom: 1.5rem;
   }
 }
@@ -286,25 +372,16 @@ h1, h2, h3, h4 {
   .home-image {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  .education-table{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
 }
 /* Education Section */
 .education {
   background-color: #000ec9;
-  color: #FBFD53;
+  color: #fff;
   font-family: 'Playfair Display', serif;
   padding: 2rem 1rem;
   text-align: center;
@@ -328,7 +405,7 @@ h1, h2, h3, h4 {
   margin: 0 auto;
   border-collapse: collapse;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .education-table th,

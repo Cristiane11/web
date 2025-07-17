@@ -21,7 +21,7 @@ function Projects() {
       <div className="search-box">
         <input
           type="text"
-          placeholder="Search by skill (e.g., React, JavaScript)"
+          placeholder="Search by skill (e.g., React, JavaScript) and click enter"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
