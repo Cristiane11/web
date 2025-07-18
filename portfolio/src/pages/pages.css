@@ -158,17 +158,19 @@ h1, h2, h3, h4 {
 
 .about-section {
   background-color: #000ec9;
-  color: #fff;
+  color: #fbfd53;
   font-family: 'Lato', sans-serif;
+  text-align: center;
   padding: 3rem 1rem;
+  margin-left: 80px;
 }
 
 .about-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -182,19 +184,19 @@ h1, h2, h3, h4 {
 
 .about-text h3 {
   font-size: 32px;
-  font-weight: bold;
   margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .about-image {
-  flex: 1 1 40%;
+  flex: 1 1 30%;
   max-width: 100%;
   border-radius: 15px;
   margin-top: 30px;
+  margin-right: -55px;;
   box-shadow: 0 4px 20px #00a5ed;
   object-fit: cover;
- 
-  min-width: 250px;
+  min-width: 350px;
 }
 
 /* Responsive Design */

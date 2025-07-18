@@ -12,7 +12,7 @@ function Header() {
           <div className="inner">
             <h1 className="heading-primary">
               <span className="heading-primary--main">Cristiane Abreu</span>
-              <span className="heading-primary--sub">Full Stack Developer</span>
+              <span className="heading-primary--sub">Full Stack Developer & SEO Specialist</span>
               <a href="/contact" className="button primary">Contact Me</a>
             </h1>
           </div>
