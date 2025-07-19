@@ -32,7 +32,7 @@ function Contact() {
     <section className="contact-section container">
       <Nav/>
       <h2 className="section-title">Contact Me</h2>
-
+     <div className="contact-content">
       <form onSubmit={handleSubmit} className="contact-form">
         <input type="hidden" name="access_key" value="48ee367a-5ec7-4e3b-abc6-2cb209719ebd" />
 
@@ -55,7 +55,23 @@ function Contact() {
 
         {status && <p className="form-status">{status}</p>}
       </form>
+          <div className="schedule-box">
+              <h3 className="schedule-heading">Getting in Touch</h3>
+              <p className='schedule-phone'>704-891-4329</p>
+              <a
+                href="https://calendly.com/cristiane-abreu/seo-project-meeting?back=1&month=2025-07"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="schedule-button"
+              >
+                Schedule an Appointment
+              </a>
+      </div>
+    </div>
     </section>
+
+
+
   );
 }
 
