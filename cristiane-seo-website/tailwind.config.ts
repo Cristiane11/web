@@ -21,7 +21,13 @@ export default {
         accent: { DEFAULT: withVar('--color-medium'), soft: withVar('--color-lightest') },
         ink: withVar('--color-darkest'),
       },
-      fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+      // Editorial type pairing (loaded from Google Fonts in index.html)
+      fontFamily: {
+        sans: ['Figtree', 'system-ui', 'sans-serif'], //            body copy
+        serif: ['Fraunces', 'Georgia', 'serif'], //                headings
+        display: ['"Red Hat Display"', 'system-ui', 'sans-serif'], // small caps labels, nav, buttons
+        script: ['Allura', 'cursive'], //                           signature accents
+      },
     },
   },
   plugins: [],

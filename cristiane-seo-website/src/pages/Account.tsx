@@ -35,7 +35,7 @@ function ProfileForm({ profile }: { profile: UserProfile }) {
   }
   return (
     <form onSubmit={save} className="card grid gap-4 sm:grid-cols-2">
-      <h2 className="text-xl sm:col-span-2">My profile</h2>
+      <h2 className="text-2xl sm:col-span-2">My profile</h2>
       {fieldLabels.map(([k, label]) => (
         <div key={k}>
           <label className="label" htmlFor={k}>{label}</label>
@@ -52,7 +52,7 @@ function ProfileForm({ profile }: { profile: UserProfile }) {
       ))}
       <div className="flex items-center gap-3 sm:col-span-2">
         <button className="btn-primary">Save profile</button>
-        {msg && <span className="text-sm text-slate-600">{msg}</span>}
+        {msg && <span className="text-sm text-brand-darkest/80">{msg}</span>}
       </div>
     </form>
   )
@@ -72,9 +72,9 @@ function MessageForm({ profile }: { profile: UserProfile }) {
         setText(''); setMsg('Message sent to Cristiane.')
       } catch (err) { setMsg(errMsg(err)) }
     }}>
-      <h2 className="text-xl">Send a message</h2>
+      <h2 className="text-2xl">Send a message</h2>
       <textarea required rows={4} maxLength={3000} className="input" value={text} onChange={(e) => setText(e.target.value)} placeholder="How can I help you?" />
-      <div className="flex items-center gap-3"><button className="btn-primary">Send</button>{msg && <span className="text-sm text-slate-600">{msg}</span>}</div>
+      <div className="flex items-center gap-3"><button className="btn-primary">Send</button>{msg && <span className="text-sm text-brand-darkest/80">{msg}</span>}</div>
     </form>
   )
 }
@@ -95,7 +95,7 @@ export default function Account() {
     dispatch(fetchAppointments(user.uid))
   }, [dispatch, user])
 
-  if (!user || !profile) return <div className="container-page py-20 text-slate-500">Loading your account…</div>
+  if (!user || !profile) return <div className="container-page py-20 text-brand-darkest/80">Loading your account…</div>
 
   const open = slots.filter((s) => !s.booked && s.start > Date.now())
   const events = open.map((s) => ({ id: s.id, title: 'Available', start: s.start, end: s.end, color: '#90b493', textColor: '#4b514a' }))
@@ -127,53 +127,56 @@ export default function Account() {
   }
 
   return (
-    <div className="container-page space-y-8 py-12">
+    <div className="container-page max-w-5xl space-y-8 py-16">
       <Seo title="My account | Cristiane Abreu" description="Client area" noindex />
-      <h1 className="text-3xl">Welcome{profile.firstName ? `, ${profile.firstName}` : ''}!</h1>
+      <div className="border-b border-brand-light pb-8 text-center">
+        <p className="kicker">Client area</p>
+        <h1 className="mt-3 font-serif text-4xl font-light sm:text-5xl">Welcome{profile.firstName ? `, ${profile.firstName}` : ''}!</h1>
+      </div>
 
       {!user.emailVerified && (
-        <div className="rounded-xl bg-yellow-50 p-4 text-sm text-yellow-900">
+        <div className="bg-yellow-50 p-4 text-sm text-yellow-900">
           Please verify your email to book appointments. Check your inbox.
           <button className="ml-3 underline" onClick={() => auth.currentUser && sendEmailVerification(auth.currentUser).then(() => setMsg('Verification email sent.'))}>Resend email</button>
           <button className="ml-3 underline" onClick={checkVerified}>I verified — refresh</button>
         </div>
       )}
-      {msg && <p className="rounded-lg bg-accent-soft p-3 text-sm text-primary-dark">{msg}</p>}
+      {msg && <p className="bg-brand-lightest p-3 text-sm text-brand-darkest">{msg}</p>}
 
       <ProfileForm profile={profile} />
 
       <section className="card">
-        <h2 className="text-xl">{moving ? `Reschedule: pick a new time (currently ${fmtDateTime(moving.start)})` : 'Book an appointment'}</h2>
-        <p className="mb-4 mt-1 text-sm text-slate-600">Click a green “Available” slot to book it.{!profileComplete && ' Please complete your first and last name first.'}</p>
+        <h2 className="text-2xl">{moving ? `Reschedule: pick a new time (currently ${fmtDateTime(moving.start)})` : 'Book an appointment'}</h2>
+        <p className="mb-4 mt-1 text-sm text-brand-darkest/80">Click a green “Available” slot to book it.{!profileComplete && ' Please complete your first and last name first.'}</p>
         <SlotCalendar events={events} onEventClick={(id) => setSelected(open.find((s) => s.id === id) ?? null)} />
-        {open.length === 0 && <p className="mt-3 text-sm text-slate-500">No open slots right now — please check back soon or send a message.</p>}
+        {open.length === 0 && <p className="mt-3 text-sm text-brand-darkest/80">No open slots right now — please check back soon or send a message.</p>}
         {selected && (
-          <div className="mt-4 rounded-xl border border-primary bg-accent-soft p-4">
+          <div className="mt-4 border border-brand-darkest bg-brand-lightest p-4">
             <p className="font-semibold">Selected: {fmtDateTime(selected.start)} – {new Date(selected.end).toLocaleTimeString('en-US', { timeStyle: 'short' })}</p>
             {!moving && <textarea className="input mt-3" rows={2} placeholder="What would you like to discuss? (optional)" value={notes} onChange={(e) => setNotes(e.target.value)} />}
             <div className="mt-3 flex gap-2">
               <button className="btn-primary" disabled={!user.emailVerified || !profileComplete} onClick={confirm}>{moving ? 'Confirm new time' : 'Confirm booking'}</button>
-              <button className="btn-ghost" onClick={() => { setSelected(null); setMoving(null) }}>Cancel</button>
+              <button className="btn-outline" onClick={() => { setSelected(null); setMoving(null) }}>Cancel</button>
             </div>
           </div>
         )}
       </section>
 
       <section className="card">
-        <h2 className="mb-4 text-xl">My appointments</h2>
-        {appts.length === 0 ? <p className="text-sm text-slate-500">No appointments yet.</p> : (
-          <ul className="divide-y">
+        <h2 className="mb-4 text-2xl">My appointments</h2>
+        {appts.length === 0 ? <p className="text-sm text-brand-darkest/80">No appointments yet.</p> : (
+          <ul className="divide-y divide-brand-light">
             {appts.map((a) => (
               <li key={a.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
                 <div>
                   <p className="font-medium">{fmtDateTime(a.start)}</p>
-                  <p className="text-xs text-slate-500">{a.notes || 'No notes'}</p>
+                  <p className="text-xs text-brand-darkest/80">{a.notes || 'No notes'}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={`badge ${a.status === 'booked' ? 'bg-brand-light text-brand-darkest' : a.status === 'cancelled' ? 'bg-red-100 text-red-700' : 'bg-slate-100'}`}>{a.status}</span>
                   {a.status === 'booked' && a.start > Date.now() && (
                     <>
-                      <button className="btn-ghost btn-sm" onClick={() => {
+                      <button className="btn-outline btn-sm" onClick={() => {
                         const n = prompt('Update notes for this meeting', a.notes)
                         if (n !== null) dispatch(updateAppointment({ id: a.id, notes: n }))
                       }}>Edit</button>

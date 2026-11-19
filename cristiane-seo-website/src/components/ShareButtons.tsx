@@ -12,7 +12,7 @@ export default function ShareButtons({ url, title }: { url: string; title: strin
   ]
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="text-sm font-semibold text-primary-dark">Share:</span>
+      <span className="kicker mr-1">Share</span>
       {links.map((l) => (
         <a key={l.name} href={l.href} target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm">
           {l.name}
@@ -20,7 +20,7 @@ export default function ShareButtons({ url, title }: { url: string; title: strin
       ))}
       <button
         type="button"
-        className="btn-ghost btn-sm"
+        className="btn-primary btn-sm"
         onClick={() => navigator.clipboard.writeText(url).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1500) })}
       >
         {copied ? 'Copied!' : 'Copy link'}

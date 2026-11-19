@@ -11,12 +11,15 @@ import { useAppSelector } from '@/store'
 
 function Shell({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="container-page flex justify-center py-16">
+    <div className="soft-bg flex justify-center px-5 py-20">
       <Seo title={`${title} | Cristiane Abreu`} description={title} noindex />
-      <div className="card w-full max-w-md">
-        <h1 className="mb-6 text-2xl">{title}</h1>
-        {!firebaseReady && <p className="mb-4 rounded bg-yellow-50 p-3 text-sm text-yellow-800">Login is not available until Firebase is configured.</p>}
+      <div className="w-full max-w-md bg-white p-3 shadow-sm">
+       <div className="border border-brand-light p-6 sm:p-8">
+        <p className="kicker text-center">Client area</p>
+        <h1 className="mb-8 mt-3 text-center font-serif text-3xl font-light">{title}</h1>
+        {!firebaseReady && <p className="mb-4 bg-yellow-50 p-3 text-sm text-yellow-800">Login is not available until Firebase is configured.</p>}
         {children}
+       </div>
       </div>
     </div>
   )
@@ -61,8 +64,8 @@ export function Login() {
         <GoogleButton onError={setErr} />
       </form>
       <div className="mt-6 flex justify-between text-sm">
-        <Link to="/forgot-password" className="text-primary">Forgot password?</Link>
-        <Link to="/signup" className="text-primary">Create an account</Link>
+        <Link to="/forgot-password" className="link">Forgot password?</Link>
+        <Link to="/signup" className="link">Create an account</Link>
       </div>
     </Shell>
   )
@@ -90,11 +93,11 @@ export function Signup() {
         <div><label className="label" htmlFor="email">Email</label><input id="email" type="email" required className="input" value={f.email} onChange={(e) => setF({ ...f, email: e.target.value })} /></div>
         <div><label className="label" htmlFor="pw">Password (min. 8 characters)</label><input id="pw" type="password" required className="input" value={f.password} onChange={(e) => setF({ ...f, password: e.target.value })} autoComplete="new-password" /></div>
         {err && <p className="text-sm text-red-600">{err}</p>}
-        <p className="text-xs text-slate-500">We will send you a verification email. You need a verified email to book appointments.</p>
+        <p className="text-xs text-brand-darkest/80">We will send you a verification email. You need a verified email to book appointments.</p>
         <button className="btn-primary w-full" disabled={busy || !firebaseReady}>{busy ? 'Creating…' : 'Sign up'}</button>
         <GoogleButton onError={setErr} />
       </form>
-      <p className="mt-6 text-center text-sm">Already have an account? <Link to="/login" className="text-primary">Log in</Link></p>
+      <p className="mt-6 text-center text-sm">Already have an account? <Link to="/login" className="link">Log in</Link></p>
     </Shell>
   )
 }
@@ -119,7 +122,7 @@ export function ForgotPassword() {
         {err && <p className="text-sm text-red-600">{err}</p>}
         <button className="btn-primary w-full" disabled={!firebaseReady}>Send reset link</button>
       </form>
-      <p className="mt-6 text-center text-sm"><Link to="/login" className="text-primary">Back to log in</Link></p>
+      <p className="mt-6 text-center text-sm"><Link to="/login" className="link">Back to log in</Link></p>
     </Shell>
   )
 }
