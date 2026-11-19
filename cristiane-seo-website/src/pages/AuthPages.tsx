@@ -115,7 +115,7 @@ export function ForgotPassword() {
     <Shell title="Reset your password">
       <form onSubmit={submit} className="space-y-4">
         <div><label className="label" htmlFor="email">Email</label><input id="email" type="email" required className="input" value={email} onChange={(e) => setEmail(e.target.value)} /></div>
-        {msg && <p className="text-sm text-green-700">{msg}</p>}
+        {msg && <p className="text-sm text-brand-darkest font-medium">{msg}</p>}
         {err && <p className="text-sm text-red-600">{err}</p>}
         <button className="btn-primary w-full" disabled={!firebaseReady}>Send reset link</button>
       </form>

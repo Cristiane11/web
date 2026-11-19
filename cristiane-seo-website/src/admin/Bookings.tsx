@@ -45,7 +45,7 @@ export default function Bookings() {
         <button className="btn-primary" onClick={exportSheets}>Export to Google Sheet</button>
       </div>
       {msg && <p className="text-sm text-slate-600">{msg}</p>}
-      <div className="overflow-x-auto rounded-2xl border border-green-100 bg-white">
+      <div className="overflow-x-auto rounded-2xl border border-brand-light bg-white">
         <table className="table-base">
           <thead><tr><th>Client name</th><th>Booking time</th><th>Type of business</th><th>Email</th><th>Status</th><th>Actions</th></tr></thead>
           <tbody className="divide-y divide-slate-100">
@@ -53,7 +53,7 @@ export default function Bookings() {
               <tr key={a.id}>
                 <td className="font-medium">{a.clientName}</td><td className="whitespace-nowrap">{fmtDateTime(a.start)}</td>
                 <td>{a.businessType || '—'}</td><td>{a.email}</td>
-                <td><span className={`badge ${a.status === 'booked' ? 'bg-green-100 text-green-800' : a.status === 'cancelled' ? 'bg-red-100 text-red-700' : 'bg-slate-100'}`}>{a.status}</span></td>
+                <td><span className={`badge ${a.status === 'booked' ? 'bg-brand-light text-brand-darkest' : a.status === 'cancelled' ? 'bg-red-100 text-red-700' : 'bg-slate-100'}`}>{a.status}</span></td>
                 <td className="whitespace-nowrap">
                   {a.status === 'booked' && <>
                     <button className="btn-ghost btn-sm" onClick={() => dispatch(updateAppointment({ id: a.id, status: 'completed' }))}>Complete</button>

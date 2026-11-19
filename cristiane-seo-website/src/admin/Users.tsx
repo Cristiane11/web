@@ -33,7 +33,7 @@ export default function Users() {
       <h1 className="text-3xl">Users</h1>
       <input className="input max-w-md" placeholder="Search by first or last name…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search users" />
       {err && <p className="text-sm text-red-600">{err}</p>}
-      <div className="overflow-x-auto rounded-2xl border border-green-100 bg-white">
+      <div className="overflow-x-auto rounded-2xl border border-brand-light bg-white">
         <table className="table-base">
           <thead><tr><th>Last name</th><th>First name</th><th>Email</th><th>Phone</th><th>Business</th><th>Type</th><th>Location</th><th>Role</th><th>Status</th><th>Joined</th><th>Actions</th></tr></thead>
           <tbody className="divide-y divide-slate-100">
@@ -43,7 +43,7 @@ export default function Users() {
                 <td>{u.email}{u.contactEmail && u.contactEmail !== u.email && <div className="text-xs text-slate-500">{u.contactEmail}</div>}</td>
                 <td>{u.phone}</td><td>{u.businessName}</td><td>{u.businessType}</td><td>{u.businessLocation}</td>
                 <td>{u.role}</td>
-                <td><span className={`badge ${u.blocked ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-800'}`}>{u.blocked ? 'Blocked' : 'Active'}</span></td>
+                <td><span className={`badge ${u.blocked ? 'bg-red-100 text-red-700' : 'bg-brand-light text-brand-darkest'}`}>{u.blocked ? 'Blocked' : 'Active'}</span></td>
                 <td className="whitespace-nowrap">{u.createdAt ? fmtDate(u.createdAt) : ''}</td>
                 <td className="whitespace-nowrap">
                   <button className="btn-ghost btn-sm" onClick={() => setEdit(u)}>View / edit</button>

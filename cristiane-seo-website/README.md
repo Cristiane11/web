@@ -16,6 +16,18 @@ React + TypeScript (Vite), Tailwind CSS, Redux Toolkit, Firebase (Auth, Firestor
 - **Blog manager:** rich text editor with image upload, cover image, slug, excerpt, tags, SEO title/description, and three statuses (Draft, Scheduled, Published). Social share buttons for Facebook, LinkedIn, X and WhatsApp, plus copy link.
 - **Email notification** to `cristipiane@gmail.com` whenever a booking is created, updated or cancelled.
 
+## Colors
+| Swatch | Hex | Tailwind class | Used for |
+|---|---|---|---|
+| Lightest | `#cde7ca` | `brand-lightest` | page/section backgrounds, soft cards |
+| Light | `#b2d4b6` | `brand-light` | borders, hover backgrounds, secondary surfaces |
+| Medium | `#90b493` | `brand-medium` | accents, highlights, icons, focus rings |
+| Muted | `#728370` | `brand-muted` | secondary buttons and borders |
+| Darkest | `#4b514a` | `brand-darkest` | headings, body text, primary buttons, header/footer |
+
+**Where to change them:** edit the RGB values of the CSS variables at the top of `src/index.css`. `tailwind.config.ts` maps them to the `brand-*` classes and to the older aliases (`primary`, `accent`, `ink`). If you change colors, also update `theme-color` in `index.html` and `public/favicon.svg`.
+**Readability:** use `#4b514a` text on light backgrounds. On `#4b514a` backgrounds use white or `#cde7ca` text. Never put white text on `#90b493` or `#b2d4b6`.
+
 ## Run locally
 ```bash
 npm install

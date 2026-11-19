@@ -19,7 +19,7 @@ export default function CalendarManager() {
   const apptBySlot = new Map(appts.filter((a) => a.status === 'booked').map((a) => [a.slotId, a]))
   const events = slots.map((s) => {
     const a = apptBySlot.get(s.id)
-    return { id: s.id, start: s.start, end: s.end, title: a ? `Booked: ${a.clientName}` : 'Open', color: a ? '#14532d' : '#4ade80', textColor: a ? '#fff' : '#14532d', editable: !a }
+    return { id: s.id, start: s.start, end: s.end, title: a ? `Booked: ${a.clientName}` : 'Open', color: a ? '#4b514a' : '#b2d4b6', textColor: a ? '#ffffff' : '#4b514a', editable: !a }
   })
   const sel = slots.find((s) => s.id === selectedId)
   const selAppt = sel ? apptBySlot.get(sel.id) : undefined

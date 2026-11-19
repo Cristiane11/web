@@ -98,7 +98,7 @@ export default function Account() {
   if (!user || !profile) return <div className="container-page py-20 text-slate-500">Loading your account…</div>
 
   const open = slots.filter((s) => !s.booked && s.start > Date.now())
-  const events = open.map((s) => ({ id: s.id, title: 'Available', start: s.start, end: s.end, color: '#16a34a' }))
+  const events = open.map((s) => ({ id: s.id, title: 'Available', start: s.start, end: s.end, color: '#90b493', textColor: '#4b514a' }))
   const profileComplete = profile.firstName && profile.lastName
 
   async function confirm() {
@@ -170,7 +170,7 @@ export default function Account() {
                   <p className="text-xs text-slate-500">{a.notes || 'No notes'}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className={`badge ${a.status === 'booked' ? 'bg-green-100 text-green-800' : a.status === 'cancelled' ? 'bg-red-100 text-red-700' : 'bg-slate-100'}`}>{a.status}</span>
+                  <span className={`badge ${a.status === 'booked' ? 'bg-brand-light text-brand-darkest' : a.status === 'cancelled' ? 'bg-red-100 text-red-700' : 'bg-slate-100'}`}>{a.status}</span>
                   {a.status === 'booked' && a.start > Date.now() && (
                     <>
                       <button className="btn-ghost btn-sm" onClick={() => {

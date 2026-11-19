@@ -39,7 +39,7 @@ export default function Contact() {
             <input id="email" type="email" required className="input" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} /></div>
           <div><label className="label" htmlFor="message">Message</label>
             <textarea id="message" required rows={6} maxLength={3000} className="input" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} /></div>
-          {status.ok && <p className="text-sm text-green-700">{status.ok}</p>}
+          {status.ok && <p className="text-sm text-brand-darkest font-medium">{status.ok}</p>}
           {status.err && <p className="text-sm text-red-600">{status.err}</p>}
           <button className="btn-primary" disabled={status.busy}>{status.busy ? 'Sending…' : 'Send message'}</button>
         </form>

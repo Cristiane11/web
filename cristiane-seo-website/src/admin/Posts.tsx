@@ -6,7 +6,7 @@ import { fmtDateTime } from '@/lib/utils'
 import { useAppDispatch, useAppSelector } from '@/store'
 import { deletePost, fetchAllPosts } from '@/store/postsSlice'
 
-const badge = { draft: 'bg-slate-100 text-slate-700', scheduled: 'bg-yellow-100 text-yellow-800', published: 'bg-green-100 text-green-800' }
+const badge = { draft: 'bg-slate-100 text-slate-700', scheduled: 'bg-yellow-100 text-yellow-800', published: 'bg-brand-light text-brand-darkest' }
 
 export default function Posts() {
   const dispatch = useAppDispatch()

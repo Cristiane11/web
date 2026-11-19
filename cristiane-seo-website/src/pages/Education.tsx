@@ -17,7 +17,7 @@ export default function Education() {
         ))}
       </div>
       <h2 className="section-title mt-14">Courses & Certifications</h2>
-      <div className="overflow-x-auto rounded-2xl border border-green-100">
+      <div className="overflow-x-auto rounded-2xl border border-brand-light">
         <table className="table-base">
           <thead><tr><th>Course</th><th>Details</th><th>Provider</th></tr></thead>
           <tbody className="divide-y divide-slate-100">

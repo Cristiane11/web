@@ -17,19 +17,19 @@ export default function Home() {
   return (
     <>
       <Seo title={s.meta.home.title} description={s.meta.home.description} path="/" jsonLd={[personLd, businessLd]} />
-      <section className="bg-gradient-to-br from-primary-dark via-primary to-green-600 text-white">
+      <section className="bg-brand-darkest text-white">
         <div className="container-page grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
           <div>
-            <p className="mb-3 inline-block rounded-full bg-white/10 px-3 py-1 text-sm font-semibold text-accent">Local SEO & Digital Marketing</p>
+            <p className="mb-3 inline-block rounded-full bg-white/10 px-3 py-1 text-sm font-semibold text-brand-lightest">Local SEO & Digital Marketing</p>
             <h1 className="text-4xl font-extrabold leading-tight text-white sm:text-5xl">{s.heroTitle}</h1>
-            <p className="mt-5 text-lg text-green-50">{s.heroSubtitle}</p>
+            <p className="mt-5 text-lg text-brand-lightest">{s.heroSubtitle}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <BookButton className="btn-accent" />
               <Link to="/contact" className="btn border border-white/60 text-white hover:bg-white/10">Contact me</Link>
             </div>
           </div>
           <img src="/images/cristiane-abreu.webp" alt="Cristiane Abreu, Local SEO specialist" width={900} height={1200}
-            className="mx-auto aspect-[3/4] w-full max-w-sm rounded-3xl object-cover shadow-2xl ring-4 ring-accent/40" fetchPriority="high" />
+            className="mx-auto aspect-[3/4] w-full max-w-sm rounded-3xl object-cover shadow-2xl ring-4 ring-brand-medium/60" fetchPriority="high" />
         </div>
       </section>
 
@@ -83,10 +83,10 @@ export default function Home() {
         </section>
       )}
 
-      <section className="bg-primary-dark py-14 text-center text-white">
+      <section className="bg-brand-darkest py-14 text-center text-white">
         <div className="container-page">
           <h2 className="text-3xl text-white">Ready to get more customers from Google?</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-green-100">Book a free consultation and get a clear Local SEO action plan for your business.</p>
+          <p className="mx-auto mt-3 max-w-2xl text-brand-lightest">Book a free consultation and get a clear Local SEO action plan for your business.</p>
           <div className="mt-6"><BookButton /></div>
         </div>
       </section>
