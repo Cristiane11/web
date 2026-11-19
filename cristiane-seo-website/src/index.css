@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Brand palette — edit these RGB triplets to re-theme the whole site ===== */
+:root {
+  --color-primary: 22 101 52;       /* dark green  #166534 */
+  --color-primary-dark: 20 83 45;   /* deeper green #14532d */
+  --color-accent: 134 239 172;      /* light green #86efac */
+  --color-accent-soft: 236 253 243; /* very light green #ecfdf3 */
+  --color-ink: 15 23 42;            /* text #0f172a */
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white font-sans text-ink antialiased; }
+  h1, h2, h3, h4 { @apply font-bold tracking-tight text-primary-dark; }
+  a { @apply transition-colors; }
+  :focus-visible { @apply outline-none ring-2 ring-primary ring-offset-2; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-primary { @apply btn bg-primary text-white hover:bg-primary-dark; }
+  .btn-accent { @apply btn bg-accent text-primary-dark hover:brightness-95; }
+  .btn-outline { @apply btn border border-primary text-primary hover:bg-accent-soft; }
+  .btn-ghost { @apply btn text-primary hover:bg-accent-soft; }
+  .btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+  .card { @apply rounded-2xl border border-green-100 bg-white p-6 shadow-sm; }
+  .input { @apply w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-accent; }
+  .label { @apply mb-1 block text-sm font-medium text-slate-700; }
+  .badge { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+  .table-base { @apply min-w-full divide-y divide-slate-200 text-sm; }
+  .table-base th { @apply bg-accent-soft px-3 py-2 text-left font-semibold text-primary-dark; }
+  .table-base td { @apply px-3 py-2 align-top; }
+  .section-title { @apply mb-8 text-3xl font-extrabold sm:text-4xl; }
+}
+
+/* Rich text (blog posts + editor) */
+.prose-content { @apply text-slate-700 leading-relaxed; }
+.prose-content h2 { @apply mb-3 mt-8 text-2xl; }
+.prose-content h3 { @apply mb-2 mt-6 text-xl; }
+.prose-content p { @apply mb-4; }
+.prose-content ul { @apply mb-4 list-disc pl-6; }
+.prose-content ol { @apply mb-4 list-decimal pl-6; }
+.prose-content a { @apply text-primary underline; }
+.prose-content blockquote { @apply my-4 border-l-4 border-accent pl-4 italic; }
+.prose-content img { @apply my-6 h-auto max-w-full rounded-xl; }
+.prose-content code { @apply rounded bg-slate-100 px-1; }
+.ProseMirror { @apply min-h-[320px] p-4 focus:outline-none; }
+.ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); @apply pointer-events-none float-left h-0 text-slate-400; }
+
+/* FullCalendar brand tweaks */
+.fc { --fc-button-bg-color: rgb(var(--color-primary)); --fc-button-border-color: rgb(var(--color-primary)); --fc-button-hover-bg-color: rgb(var(--color-primary-dark)); --fc-button-active-bg-color: rgb(var(--color-primary-dark)); --fc-today-bg-color: rgb(var(--color-accent-soft)); font-size: 0.85rem; }
+.fc .fc-event { cursor: pointer; }
