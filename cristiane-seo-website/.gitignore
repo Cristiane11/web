@@ -1,0 +1,14 @@
+node_modules
+dist
+.vercel
+*.local
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+service-account*.json
+
+# platform metadata (not part of the project)
+.abacus.donotdelete
+.oxlintrc.json

@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Brand palette — edit these RGB triplets to re-theme the whole site =====
+   Contrast guide (WCAG AA): body/heading text = darkest on white/lightest/light.
+   On darkest backgrounds use white or lightest text. Never put white text on medium or light. */
+:root {
+  --color-lightest: 205 231 202; /* #cde7ca  page/section backgrounds, soft cards */
+  --color-light: 178 212 182;    /* #b2d4b6  borders, hover backgrounds, secondary surfaces */
+  --color-medium: 144 180 147;   /* #90b493  accents, highlights, icons, focus rings */
+  --color-muted: 114 131 112;    /* #728370  secondary buttons/borders, large secondary text */
+  --color-darkest: 75 81 74;     /* #4b514a  headings, body text, primary buttons, header/footer */
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { overflow-x: clip; @apply bg-white font-sans text-[17px] font-light leading-relaxed text-brand-darkest antialiased; }
+  h1, h2, h3, h4 { @apply font-serif font-light tracking-normal text-brand-darkest; }
+  strong, b { @apply font-semibold; }
+  a { @apply transition-colors; }
+  :focus-visible { @apply outline-none ring-2 ring-brand-medium ring-offset-2; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8; }
+  /* Small uppercase, letter-spaced labels (editorial "kicker") */
+  .kicker { @apply font-display text-[11px] font-semibold uppercase tracking-[0.28em] text-brand-darkest; }
+  .heading-caps { @apply font-serif font-extralight uppercase leading-[1.05] tracking-wide; }
+  .section-title { @apply mb-8 font-serif text-4xl font-extralight sm:text-5xl; }
+  /* Buttons — every button uses the dark brand colour (#4b514a) with white text (contrast 8:1) */
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-none px-6 py-3 font-display text-[11px] font-semibold uppercase tracking-[0.22em] transition duration-200 disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-primary { @apply btn bg-brand-darkest text-white hover:bg-[#3b4039] hover:shadow-md; }
+  .btn-accent { @apply btn-primary; }
+  .btn-outline { @apply btn border border-brand-darkest bg-white text-brand-darkest hover:bg-brand-darkest hover:text-white; }
+  .btn-ghost { @apply btn border border-brand-darkest/50 text-brand-darkest hover:border-brand-darkest hover:bg-brand-darkest hover:text-white; }
+  .btn-on-dark { @apply btn border border-brand-lightest text-white hover:bg-brand-lightest hover:text-brand-darkest; }
+  .btn-danger { @apply btn bg-red-700 text-white hover:bg-red-800; }
+  .btn-sm { @apply px-3.5 py-2 text-[10px]; }
+  .link { @apply font-medium text-brand-darkest underline decoration-brand-medium decoration-1 underline-offset-4 hover:decoration-brand-darkest; }
+  .card { @apply border border-brand-light bg-white p-6; }
+  /* Photo frame like the reference (white mat + thin line) */
+  .frame { @apply bg-white p-2.5 shadow-[0_10px_30px_-12px_rgba(75,81,74,0.35)] ring-1 ring-brand-light; }
+  .input { @apply w-full rounded-none border border-brand-muted/60 bg-white px-3.5 py-2.5 text-sm font-normal placeholder:text-brand-darkest/50 focus:border-brand-darkest focus:outline-none focus:ring-1 focus:ring-brand-darkest; }
+  .label { @apply mb-1.5 block font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-darkest; }
+  .badge { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+  .chip { @apply inline-flex items-center border px-3.5 py-1.5 font-display text-[10px] font-semibold uppercase tracking-[0.2em] transition; }
+  .table-base { @apply min-w-full divide-y divide-brand-light text-sm; }
+  .table-base th { @apply bg-brand-lightest px-3 py-2 text-left font-display text-xs font-semibold uppercase tracking-wider text-brand-darkest; }
+  .table-base td { @apply px-3 py-2 align-top; }
+  .soft-bg { @apply bg-brand-lightest/40; }
+  .thin-rule { @apply h-px w-16 bg-brand-muted; }
+}
+
+/* Rich text (blog posts + editor) */
+.prose-content { @apply text-brand-darkest leading-relaxed; }
+.prose-content h2 { @apply mb-3 mt-10 text-3xl; }
+.prose-content h3 { @apply mb-2 mt-6 text-xl; }
+.prose-content p { @apply mb-4; }
+.prose-content ul { @apply mb-4 list-disc pl-6; }
+.prose-content ol { @apply mb-4 list-decimal pl-6; }
+.prose-content a { @apply text-brand-darkest underline decoration-brand-medium decoration-2 underline-offset-2; }
+.prose-content blockquote { @apply my-4 border-l-4 border-brand-medium pl-4 italic; }
+.prose-content img { @apply my-6 h-auto max-w-full; }
+.prose-content code { @apply rounded bg-slate-100 px-1; }
+.ProseMirror { @apply min-h-[320px] p-4 focus:outline-none; caret-color: rgb(var(--color-darkest)); }
+.ProseMirror ::selection { background: rgb(var(--color-light)); }
+.ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); @apply pointer-events-none float-left h-0 text-slate-400; }
+
+/* FullCalendar brand tweaks */
+.fc { --fc-button-bg-color: rgb(var(--color-darkest)); --fc-button-border-color: rgb(var(--color-darkest)); --fc-button-hover-bg-color: rgb(var(--color-muted)); --fc-button-hover-border-color: rgb(var(--color-muted)); --fc-button-active-bg-color: rgb(var(--color-muted)); --fc-button-active-border-color: rgb(var(--color-muted)); --fc-today-bg-color: rgb(var(--color-lightest) / 0.6); --fc-border-color: rgb(var(--color-light)); --fc-now-indicator-color: rgb(var(--color-darkest)); font-size: 0.85rem; }
+.fc .fc-event { cursor: pointer; }

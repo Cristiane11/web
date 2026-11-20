@@ -1,0 +1,69 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function verified() { return signedIn() && request.auth.token.email_verified == true; }
+    function profile() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data; }
+    function hasProfile() { return exists(/databases/$(database)/documents/users/$(request.auth.uid)); }
+    // Keep this email list in sync with VITE_MANAGER_EMAIL / MANAGER_EMAIL.
+    function isManager() {
+      return signedIn() && (
+        (verified() && request.auth.token.email in ['cristipiane@gmail.com']) ||
+        (hasProfile() && profile().role == 'manager')
+      );
+    }
+    function notBlocked() { return signedIn() && (!hasProfile() || profile().blocked != true); }
+    function changes() { return request.resource.data.diff(resource.data).affectedKeys(); }
+
+    match /users/{uid} {
+      allow read: if (signedIn() && request.auth.uid == uid) || isManager();
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.role == 'client' && request.resource.data.blocked == false;
+      allow update: if isManager()
+        || (request.auth.uid == uid && notBlocked() && !changes().hasAny(['role', 'blocked', 'email', 'createdAt']));
+      allow delete: if isManager();
+    }
+
+    match /availability/{slotId} {
+      allow read: if true;
+      allow create, delete: if isManager();
+      allow update: if isManager() || (
+        verified() && notBlocked() && changes().hasOnly(['booked', 'bookedBy']) && (
+          // book an open slot for yourself
+          (resource.data.booked == false && request.resource.data.booked == true && request.resource.data.bookedBy == request.auth.uid) ||
+          // release your own slot (cancel / reschedule)
+          (resource.data.bookedBy == request.auth.uid && request.resource.data.booked == false && request.resource.data.bookedBy == null)
+        )
+      );
+    }
+
+    match /appointments/{id} {
+      allow read: if isManager() || (signedIn() && resource.data.uid == request.auth.uid);
+      allow create: if verified() && notBlocked()
+        && request.resource.data.uid == request.auth.uid && request.resource.data.status == 'booked';
+      allow update: if isManager() || (
+        signedIn() && notBlocked() && resource.data.uid == request.auth.uid
+        && !changes().hasAny(['uid', 'createdAt'])
+        && request.resource.data.status in ['booked', 'cancelled']
+      );
+      allow delete: if isManager();
+    }
+
+    match /messages/{id} {
+      allow create: if request.resource.data.read == false
+        && request.resource.data.message is string && request.resource.data.message.size() <= 3000
+        && (request.resource.data.uid == null || (signedIn() && request.resource.data.uid == request.auth.uid && notBlocked()));
+      allow read, update, delete: if isManager();
+    }
+
+    match /posts/{id} {
+      allow read: if resource.data.status == 'published' || isManager();
+      allow write: if isManager();
+    }
+
+    match /settings/{id} {
+      allow read: if true;
+      allow write: if isManager();
+    }
+  }
+}
