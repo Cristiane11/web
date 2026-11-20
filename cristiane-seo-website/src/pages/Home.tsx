@@ -2,7 +2,7 @@ import { useEffect, useState, type FormEvent, type ReactNode } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Seo, { businessLd, personLd } from '@/components/Seo'
 import { BookButton, instagramUrl } from '@/components/Layout'
-import { projects, services } from '@/data/content'
+import { services } from '@/data/content'
 import { useSettings } from '@/lib/useSettings'
 import { useAppDispatch, useAppSelector } from '@/store'
 import { fetchPublicPosts } from '@/store/postsSlice'
@@ -18,6 +18,13 @@ function TileLink({ to, className, children }: { to: string; className: string; 
   return to.startsWith('#') ? <a href={to} className={className}>{children}</a> : <Link to={to} className={className}>{children}</Link>
 }
 
+const fallbackPosts = [
+  { img: '/images/searchengineoptimization.webp', alt: 'Local SEO planning notes' },
+  { img: '/images/website-analysis.webp', alt: 'Website analysis on a laptop' },
+  { img: '/images/googleads.webp', alt: 'Google Ads campaign dashboard' },
+  { img: '/images/digital-marketing.webp', alt: 'Digital marketing strategy session' },
+].map((f, i) => ({ id: `soon-${i}`, to: '/blog', img: f.img, alt: f.alt, kicker: 'Local SEO tips', title: 'Coming soon' }))
+
 type IgItem = { id: string; image: string; permalink?: string; caption?: string }
 const fallbackStrip: IgItem[] = ['searchengineoptimization', 'crisbg', 'digital-marketing', 'website-analysis', 'cristiane-abreu', 'analyze']
   .map((n) => ({ id: n, image: `/images/${n}.webp` }))
@@ -30,6 +37,11 @@ export default function Home() {
   const [quick, setQuick] = useState({ name: '', email: '' })
   const [ig, setIg] = useState<IgItem[]>([])
   const igUrl = instagramUrl(s.instagramHandle)
+  // Real Firestore posts replace the fallback cards automatically (topped up to 4 if fewer exist)
+  const cards = [
+    ...posts.map((p) => ({ id: p.id, to: `/blog/${p.slug}`, img: p.coverImage || '/images/searchengineoptimization.webp', alt: p.title, kicker: fmtDate(p.publishAt), title: p.title })),
+    ...fallbackPosts,
+  ].slice(0, 4)
   useEffect(() => { dispatch(fetchPublicPosts()) }, [dispatch])
   useEffect(() => {
     fetch('/api/instagram')
@@ -81,15 +93,15 @@ export default function Home() {
         ))}
       </section>
 
-      {/* 3 — One-line "Let's talk" form band */}
-      <section className="bg-brand-lightest" aria-labelledby="talk-title">
-        <form onSubmit={startContact} className="container-page flex flex-col items-stretch gap-4 py-8 lg:flex-row lg:items-center">
-          <h2 id="talk-title" className="shrink-0 font-serif text-2xl font-light lg:mr-4">Let&rsquo;s talk about growing your local business.</h2>
+      {/* 3 — One-line "Let's talk" form band: sentence + name + email + button in a single row (stacks on small screens) */}
+      <section className="bg-brand-lightest" aria-label="Let's talk Local SEO">
+        <form onSubmit={startContact} className="container-page flex flex-col items-stretch gap-3 py-6 md:flex-row md:items-center md:gap-4">
+          <p className="shrink-0 whitespace-nowrap font-serif text-xl font-light text-brand-darkest lg:text-2xl">Let&rsquo;s talk Local SEO</p>
           <label className="sr-only" htmlFor="q-name">First name</label>
-          <input id="q-name" required className="input flex-1" placeholder="First name" autoComplete="given-name" value={quick.name} onChange={(e) => setQuick({ ...quick, name: e.target.value })} />
+          <input id="q-name" required className="input min-w-0 flex-1" placeholder="First name" autoComplete="given-name" value={quick.name} onChange={(e) => setQuick({ ...quick, name: e.target.value })} />
           <label className="sr-only" htmlFor="q-email">Email address</label>
-          <input id="q-email" required type="email" className="input flex-1" placeholder="Email address" autoComplete="email" value={quick.email} onChange={(e) => setQuick({ ...quick, email: e.target.value })} />
-          <button className="btn-primary">Get in touch</button>
+          <input id="q-email" required type="email" className="input min-w-0 flex-1" placeholder="Email address" autoComplete="email" value={quick.email} onChange={(e) => setQuick({ ...quick, email: e.target.value })} />
+          <button className="btn-primary shrink-0 whitespace-nowrap">Get in touch</button>
         </form>
       </section>
 
@@ -150,14 +162,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7 — Quick access split */}
+      {/* 7 — Quick access: text left, framed images right (medium size) */}
       <section className="soft-bg overflow-hidden py-20">
-        <div className="container-page grid items-center gap-14 lg:grid-cols-[1.3fr_1fr]">
+        <div className="container-page grid items-center gap-12 md:grid-cols-[1.4fr_1fr]">
           <div className="divide-y divide-brand-light">
             <p className="kicker pb-4">Quick access</p>
             {[
               { title: 'Work With Me', text: 'Book a free consultation and get a clear Local SEO action plan for your business.', cta: <BookButton label="Book a call →" /> },
-              { title: 'See My Projects', text: 'Real estate, agency, salon and eCommerce websites built to rank locally and generate leads.', cta: <Link to="/projects" className="btn-primary">View projects →</Link> },
+              { title: 'See My Projects', text: 'Real estate, agency, salon and eCommerce websites built to rank locally and generate leads.', cta: <Link to="/projects" className="btn-primary">See my projects →</Link> },
             ].map((q) => (
               <div key={q.title} className="py-7">
                 <h3 className="font-serif text-3xl font-light sm:text-4xl">{q.title}</h3>
@@ -166,57 +178,36 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="relative mx-auto w-full max-w-sm pb-16">
-            <img src="/images/cris.webp" alt="Professional reviewing a local marketing plan" loading="lazy" className="aspect-[4/5] w-full object-cover" />
-            <div className="frame absolute -bottom-2 -right-4 w-1/2 rotate-6">
+          <div className="relative mx-auto w-full max-w-[280px] pb-12 pr-6">
+            <div className="frame">
+              <img src="/images/cris.webp" alt="Professional reviewing a local marketing plan" loading="lazy" className="aspect-[4/5] w-full object-cover" />
+            </div>
+            <div className="frame absolute -bottom-1 right-0 w-1/2 rotate-6">
               <img src="/images/googleads.webp" alt="" aria-hidden="true" loading="lazy" className="aspect-square w-full object-cover" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 9 — Featured projects */}
-      <section className="container-page py-20">
+      {/* 9 — From the blog: 4 latest posts in the project-card style (static fallback cards until posts exist) */}
+      <section className="container-page py-20" aria-labelledby="latest-posts">
         <div className="mb-12 text-center">
-          <p className="kicker">Recent work</p>
-          <h2 className="heading-caps mt-4 text-4xl sm:text-5xl">Featured projects</h2>
+          <p className="kicker">From the blog</p>
+          <h2 id="latest-posts" className="heading-caps mt-4 text-4xl sm:text-5xl">Latest posts</h2>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {projects.map((p) => (
-            <a key={p.title} href={p.link} target="_blank" rel="noopener noreferrer" className="group flex flex-col border border-brand-light p-2.5 transition hover:border-brand-darkest">
-              <div className="flex aspect-[4/3] items-center justify-center bg-brand-lightest/50 p-6">
-                <img src={p.img} alt={p.title} loading="lazy" className="max-h-full w-auto object-contain" />
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {cards.map((c) => (
+            <Link key={c.id} to={c.to} className="group flex flex-col border border-brand-light p-2.5 transition hover:border-brand-darkest">
+              <div className="aspect-[4/3] overflow-hidden bg-brand-lightest/50">
+                <img src={c.img} alt={c.alt} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
               </div>
               <div className="flex-1 px-3 py-5 text-center">
-                <p className="kicker text-[10px]">{p.tags.split(',')[0]}</p>
-                <h3 className="mt-2 font-serif text-xl font-light group-hover:underline">{p.title}</h3>
+                <p className="kicker text-[10px]">{c.kicker}</p>
+                <h3 className="mt-2 font-serif text-xl font-light leading-snug group-hover:underline">{c.title}</h3>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
-        <div className="mt-10 text-center"><Link to="/projects" className="btn-primary">See all projects</Link></div>
-
-        <div className="mb-10 mt-20 text-center">
-          <p className="kicker">From the blog</p>
-          <h2 className="heading-caps mt-4 text-4xl sm:text-5xl">Latest posts</h2>
-        </div>
-        {posts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {posts.map((p) => (
-              <Link key={p.id} to={`/blog/${p.slug}`} className="group flex flex-col border border-brand-light p-2.5 transition hover:border-brand-darkest">
-                <div className="aspect-[4/3] overflow-hidden bg-brand-lightest/50">
-                  <img src={p.coverImage || '/images/searchengineoptimization.webp'} alt={p.title} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                </div>
-                <div className="flex-1 px-3 py-5 text-center">
-                  <p className="kicker text-[10px]">{fmtDate(p.publishAt)}</p>
-                  <h3 className="mt-2 font-serif text-xl font-light leading-snug group-hover:underline">{p.title}</h3>
-                </div>
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <p className="mx-auto max-w-xl bg-brand-lightest/60 p-8 text-center font-serif text-xl font-light">New articles are coming soon.</p>
-        )}
         <div className="mt-10 text-center"><Link to="/blog" className="btn-primary">See all posts</Link></div>
       </section>
 
