@@ -77,5 +77,7 @@ export interface SiteSettings {
   heroSubtitle: string
   aboutIntro: string
   aboutBody: string
+  /** Instagram username without @ (optional; falls back to config default) */
+  instagramHandle?: string
   meta: Record<string, PageMeta>
 }

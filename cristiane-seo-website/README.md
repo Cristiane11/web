@@ -28,6 +28,16 @@ React + TypeScript (Vite), Tailwind CSS, Redux Toolkit, Firebase (Auth, Firestor
 **Where to change them:** edit the RGB values of the CSS variables at the top of `src/index.css`. `tailwind.config.ts` maps them to the `brand-*` classes and to the older aliases (`primary`, `accent`, `ink`). If you change colors, also update `theme-color` in `index.html` and `public/favicon.svg`.
 **Readability:** use `#4b514a` text on light backgrounds. On `#4b514a` backgrounds use white or `#cde7ca` text. Never put white text on `#90b493` or `#b2d4b6`.
 
+## Instagram feed
+The Home page strip ("Follow along on Instagram") loads the latest 6 posts from `/api/instagram`. If the token is not set or the call fails, it shows local images instead.
+1. Switch your Instagram account to a **Professional** (Business or Creator) account.
+2. At developers.facebook.com create a Meta app and add the **Instagram API** product (Instagram login). Add your account as a tester/connected account.
+3. Generate an access token and exchange it for a **long-lived token** (valid ~60 days).
+4. In Vercel → Project → Settings → Environment Variables add `INSTAGRAM_ACCESS_TOKEN` (optional `INSTAGRAM_USER_ID`), then redeploy.
+5. Set your username in **Admin → Site content & SEO → Instagram** (used for the profile link and footer icon).
+
+Tokens expire after ~60 days. Refresh before expiry with `GET https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=TOKEN` and update the env var (this can be automated with a monthly Vercel Cron).
+
 ## Run locally
 ```bash
 npm install

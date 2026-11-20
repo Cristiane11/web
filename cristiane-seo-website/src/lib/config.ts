@@ -12,6 +12,8 @@ export const SOCIAL = {
   linkedin: 'https://www.linkedin.com/in/cristianegabreu/',
   facebook: 'https://www.facebook.com/people/Website-Professional/100066757076765/',
   google: 'https://g.co/kgs/UgtGyva',
+  // Default Instagram handle; the manager can override it in Admin → Site content & SEO.
+  instagram: env.VITE_INSTAGRAM_HANDLE || 'your_instagram_handle',
 }
 
 export const isManagerEmail = (email?: string | null) => !!email && MANAGER_EMAILS.includes(email.toLowerCase())

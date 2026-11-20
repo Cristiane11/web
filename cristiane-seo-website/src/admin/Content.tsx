@@ -34,6 +34,13 @@ export default function Content() {
             <textarea className="input" rows={rows} value={cur[k]} onChange={(e) => setS({ ...cur, [k]: e.target.value })} /></div>
         ))}
       </div>
+      <div className="card space-y-2">
+        <h2 className="text-xl">Instagram</h2>
+        <label className="label" htmlFor="ig">Instagram username (without @)</label>
+        <input id="ig" className="input" placeholder="your_instagram_handle" value={cur.instagramHandle ?? ''}
+          onChange={(e) => setS({ ...cur, instagramHandle: e.target.value.replace(/^@/, '').trim() })} />
+        <p className="text-xs text-brand-darkest/80">Used for the “Follow along on Instagram” link and footer icon. Recent posts appear automatically once INSTAGRAM_ACCESS_TOKEN is set in Vercel (see README).</p>
+      </div>
       <div className="card space-y-5">
         <h2 className="text-xl">SEO meta per page</h2>
         <p className="text-sm text-slate-500">Titles ideally under 60 characters, descriptions 120–160 characters.</p>

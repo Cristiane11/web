@@ -1,13 +1,12 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Seo, { businessLd, personLd } from '@/components/Seo'
-import { BookButton } from '@/components/Layout'
+import { BookButton, instagramUrl } from '@/components/Layout'
 import { projects, services } from '@/data/content'
 import { useSettings } from '@/lib/useSettings'
 import { useAppDispatch, useAppSelector } from '@/store'
 import { fetchPublicPosts } from '@/store/postsSlice'
 import { fmtDate } from '@/lib/utils'
-import { SOCIAL } from '@/lib/config'
 
 const tiles = [
   { label: 'Services', to: '#services', img: '/images/searchengineoptimization.webp', alt: 'Local SEO strategy notes on a desk' },
@@ -19,13 +18,25 @@ function TileLink({ to, className, children }: { to: string; className: string; 
   return to.startsWith('#') ? <a href={to} className={className}>{children}</a> : <Link to={to} className={className}>{children}</Link>
 }
 
+type IgItem = { id: string; image: string; permalink?: string; caption?: string }
+const fallbackStrip: IgItem[] = ['searchengineoptimization', 'crisbg', 'digital-marketing', 'website-analysis', 'cristiane-abreu', 'analyze']
+  .map((n) => ({ id: n, image: `/images/${n}.webp` }))
+
 export default function Home() {
   const s = useSettings()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const posts = useAppSelector((st) => st.posts.items.filter((p) => p.status === 'published' && p.publishAt <= Date.now()).slice(0, 3))
+  const posts = useAppSelector((st) => st.posts.items.filter((p) => p.status === 'published' && p.publishAt <= Date.now()).sort((a, b) => b.publishAt - a.publishAt).slice(0, 4))
   const [quick, setQuick] = useState({ name: '', email: '' })
+  const [ig, setIg] = useState<IgItem[]>([])
+  const igUrl = instagramUrl(s.instagramHandle)
   useEffect(() => { dispatch(fetchPublicPosts()) }, [dispatch])
+  useEffect(() => {
+    fetch('/api/instagram')
+      .then((r) => (r.ok && r.headers.get('content-type')?.includes('json') ? r.json() : { items: [] }))
+      .then((d: { items?: IgItem[] }) => setIg(Array.isArray(d.items) ? d.items : []))
+      .catch(() => setIg([]))
+  }, [])
 
   function startContact(e: FormEvent) {
     e.preventDefault()
@@ -70,35 +81,29 @@ export default function Home() {
         ))}
       </section>
 
-      {/* 3 — Inline "get in touch" band (like the reference newsletter bar) */}
-      <section className="bg-brand-lightest">
+      {/* 3 — One-line "Let's talk" form band */}
+      <section className="bg-brand-lightest" aria-labelledby="talk-title">
         <form onSubmit={startContact} className="container-page flex flex-col items-stretch gap-4 py-8 lg:flex-row lg:items-center">
-          <h2 className="shrink-0 font-serif text-3xl font-light lg:mr-6">Let&rsquo;s talk Local SEO</h2>
+          <h2 id="talk-title" className="shrink-0 font-serif text-2xl font-light lg:mr-4">Let&rsquo;s talk about growing your local business.</h2>
           <label className="sr-only" htmlFor="q-name">First name</label>
-          <input id="q-name" className="input flex-1" placeholder="First name" value={quick.name} onChange={(e) => setQuick({ ...quick, name: e.target.value })} />
+          <input id="q-name" required className="input flex-1" placeholder="First name" autoComplete="given-name" value={quick.name} onChange={(e) => setQuick({ ...quick, name: e.target.value })} />
           <label className="sr-only" htmlFor="q-email">Email address</label>
-          <input id="q-email" type="email" className="input flex-1" placeholder="Email address" value={quick.email} onChange={(e) => setQuick({ ...quick, email: e.target.value })} />
+          <input id="q-email" required type="email" className="input flex-1" placeholder="Email address" autoComplete="email" value={quick.email} onChange={(e) => setQuick({ ...quick, email: e.target.value })} />
           <button className="btn-primary">Get in touch</button>
         </form>
       </section>
 
-      {/* 4 — Photo collage around centered intro text */}
-      <section className="relative overflow-hidden py-20">
-        <div className="container-page grid items-center gap-10 lg:grid-cols-[1fr_1.2fr_1fr]">
-          <div className="relative mx-auto w-64 lg:w-full">
-            <img src="/images/cristiane-abreu.webp" alt="Cristiane Abreu, Local SEO specialist" width={900} height={1200} loading="lazy"
-              className="aspect-[3/4] w-full object-cover" />
-            <img src="/images/seoforwordpress.webp" alt="" aria-hidden="true" loading="lazy"
-              className="absolute -bottom-8 -left-6 hidden w-32 border-4 border-white object-cover shadow-md sm:block" />
+      {/* 4 — Small framed image left, intro text right */}
+      <section className="py-20">
+        <div className="container-page grid items-center gap-12 md:grid-cols-[1fr_1.6fr]">
+          <div className="frame mx-auto w-full max-w-xs -rotate-2">
+            <img src="/images/seoforwordpress.webp" alt="Local SEO work for a WordPress website" loading="lazy" className="aspect-[4/5] w-full object-cover" />
           </div>
-          <div className="text-center">
-            <p className="kicker">Strategy that brings customers to your door</p>
-            <h2 className="heading-caps mt-5 text-4xl sm:text-5xl">Local growth, without the overwhelm.</h2>
-            <p className="mx-auto mt-6 max-w-md text-brand-darkest/90">{s.heroSubtitle}</p>
+          <div className="text-center md:text-left">
+            <h2 className="heading-caps text-4xl sm:text-5xl">Strategy that brings customers to your door</h2>
+            <p className="mt-6 max-w-xl text-brand-darkest/90 md:mx-0 mx-auto">{s.heroSubtitle}</p>
             <Link to="/about" className="btn-primary mt-8">Learn more</Link>
           </div>
-          <img src="/images/markentinggroup.webp" alt="Marketing team planning a local SEO campaign" loading="lazy"
-            className="hidden aspect-[4/5] w-full object-cover lg:block lg:-mt-24" />
         </div>
       </section>
 
@@ -153,7 +158,6 @@ export default function Home() {
             {[
               { title: 'Work With Me', text: 'Book a free consultation and get a clear Local SEO action plan for your business.', cta: <BookButton label="Book a call →" /> },
               { title: 'See My Projects', text: 'Real estate, agency, salon and eCommerce websites built to rank locally and generate leads.', cta: <Link to="/projects" className="btn-primary">View projects →</Link> },
-              { title: 'Read the Latest', text: 'Practical Local SEO, Google Business Profile and digital marketing tips for small businesses.', cta: <Link to="/blog" className="btn-primary">Visit the blog →</Link> },
             ].map((q) => (
               <div key={q.title} className="py-7">
                 <h3 className="font-serif text-3xl font-light sm:text-4xl">{q.title}</h3>
@@ -170,25 +174,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* 8 — Latest from the blog (when published) */}
-      {posts.length > 0 && (
-        <section className="container-page py-20">
-          <h2 className="heading-caps text-center text-4xl sm:text-5xl">Latest from the blog</h2>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {posts.map((p) => (
-              <Link key={p.id} to={`/blog/${p.slug}`} className="group relative block aspect-[3/4] overflow-hidden">
-                <img src={p.coverImage || '/images/searchengineoptimization.webp'} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                <div className="absolute inset-x-6 bottom-8 bg-white px-5 py-6 text-center">
-                  <p className="kicker text-[10px]">{p.tags[0] || fmtDate(p.publishAt)}</p>
-                  <h3 className="mt-2 font-serif text-2xl font-light leading-tight group-hover:underline">{p.title}</h3>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-10 text-center"><Link to="/blog" className="btn-outline">All articles</Link></div>
-        </section>
-      )}
 
       {/* 9 — Featured projects */}
       <section className="container-page py-20">
@@ -210,6 +195,29 @@ export default function Home() {
           ))}
         </div>
         <div className="mt-10 text-center"><Link to="/projects" className="btn-primary">See all projects</Link></div>
+
+        <div className="mb-10 mt-20 text-center">
+          <p className="kicker">From the blog</p>
+          <h2 className="heading-caps mt-4 text-4xl sm:text-5xl">Latest posts</h2>
+        </div>
+        {posts.length > 0 ? (
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {posts.map((p) => (
+              <Link key={p.id} to={`/blog/${p.slug}`} className="group flex flex-col border border-brand-light p-2.5 transition hover:border-brand-darkest">
+                <div className="aspect-[4/3] overflow-hidden bg-brand-lightest/50">
+                  <img src={p.coverImage || '/images/searchengineoptimization.webp'} alt={p.title} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                </div>
+                <div className="flex-1 px-3 py-5 text-center">
+                  <p className="kicker text-[10px]">{fmtDate(p.publishAt)}</p>
+                  <h3 className="mt-2 font-serif text-xl font-light leading-snug group-hover:underline">{p.title}</h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="mx-auto max-w-xl bg-brand-lightest/60 p-8 text-center font-serif text-xl font-light">New articles are coming soon.</p>
+        )}
+        <div className="mt-10 text-center"><Link to="/blog" className="btn-primary">See all posts</Link></div>
       </section>
 
       {/* 10 — CTA band */}
@@ -222,15 +230,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 11 — Image strip */}
-      <section aria-label="Follow along" className="pt-14">
+      {/* 11 — Instagram strip (live feed via /api/instagram, local images as fallback) */}
+      <section aria-label="Follow along on Instagram" className="pt-14">
         <p className="kicker mb-6 text-center">
-          <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" className="hover:underline">Follow along on LinkedIn →</a>
+          <a href={igUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">Follow along on Instagram →</a>
         </p>
         <div className="grid grid-cols-3 sm:grid-cols-6">
-          {['searchengineoptimization', 'crisbg', 'digital-marketing', 'website-analysis', 'cristiane-abreu', 'analyze'].map((n) => (
-            <a key={n} href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" className="group block aspect-square overflow-hidden" aria-label="Cristiane Abreu on LinkedIn">
-              <img src={`/images/${n}.webp`} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-110 group-hover:opacity-90" />
+          {(ig.length ? ig : fallbackStrip).map((m) => (
+            <a key={m.id} href={m.permalink || igUrl} target="_blank" rel="noopener noreferrer" className="group block aspect-square overflow-hidden"
+              aria-label={m.caption ? `Instagram post: ${m.caption.slice(0, 80)}` : 'Cristiane Abreu on Instagram'}>
+              <img src={m.image} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-110 group-hover:opacity-90" />
             </a>
           ))}
         </div>
